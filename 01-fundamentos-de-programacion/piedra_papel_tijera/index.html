@@ -26,25 +26,44 @@
         }
 
         // 1 es piedra, 2 es papel, 3 es tijera
-        let jugador = 0;
-        let pc = aleatorio(1,3);
-        jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera");
 
-        alert("PC elige: " + eleccion(pc));
-        alert("Jugador elige: " + eleccion(jugador));
+        let conteoJugador1 = 0;
+        let conteoPc = 0;
 
-        // COMBATE
-        if ( pc == jugador ) {
-            alert("Empate");
-        } else if ( jugador == 1 && pc == 3 ){
-            alert("Ganaste");
-        } else if ( jugador == 2 && pc == 1) {
-            alert("Ganaste");
-        } else if ( jugador == 3 && pc == 2 ) {
-            alert("Ganaste");
-        } else {
-            alert("Perdiste");
+        while (!(conteoJugador1 < 3) || (conteoPc <= 3)) {
+            let pc = aleatorio(1,3);
+            let jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera");
+
+            alert("PC elige: " + eleccion(pc));
+            alert("Jugador elige: " + eleccion(jugador));
+            // COMBATE
+            if(conteoJugador1 === 2){
+                alert("GANASTE EL JUEGO")
+                break;
+            }else if (conteoPc === 2) {
+                alert("PERDISTE EL JUEGO");
+                break;
+            } else {
+                if ( pc == jugador ) {
+                    alert("Empate");
+                } else if ( jugador == 1 && pc == 3 ){
+                    conteoJugador1++;
+                    alert("Ganaste");
+                } else if ( jugador == 2 && pc == 1) {
+                    conteoJugador1++;
+                    alert("Ganaste");
+                } else if ( jugador == 3 && pc == 2 ) {
+                    conteoJugador1++;
+                    alert("Ganaste");
+                } else {
+                    conteoPc++;
+                    alert("Perdiste");
+                }
+            }
         }
+
+        alert("Ganaste " + conteoJugador1 + " veces. Perdiste: " + conteoPc)
+
     </script>
 </body>
 </html>
