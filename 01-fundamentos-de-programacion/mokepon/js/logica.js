@@ -1,6 +1,6 @@
-let playerAttack, enemyAttack;
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
-
+let playerAttack, enemyAttack;
+let livesEnemy = 3, livesPlayer = 3;
 
 function iniciarJuego() {
     let btnPetPlayer = document.getElementById("btn-pet");
@@ -71,16 +71,34 @@ function elementalRandomEnemyAttack(){
 }
 
 function fight () {
-    if ( enemyAttack == playerAttack ) {
-        createMessage("Empate");
-    } else if ( playerAttack == "FUEGO" && enemyAttack == "TIERRA" ){
-        createMessage("Ganaste");
-    } else if ( playerAttack == "AGUA" && enemyAttack == "FUEGO") {
-        createMessage("Ganaste");
-    } else if ( playerAttack == "TIERRA" && enemyAttack == "AGUA" ) {
-        createMessage("Ganaste");
+
+    const spanPlayerLives =document.getElementById('lives-player');
+    const spanEnemyLives = document.getElementById('lives-enemy');
+
+    if( livesEnemy < 0 ){
+        alert("GANASTE EL JUEGO");
+    } else if ( livesPlayer < 0){
+        alert("PERDISTE EL JUEGO") 
     } else {
-        createMessage("Perdiste");
+        if ( enemyAttack == playerAttack ) {
+            createMessage("Empate");
+        } else if ( playerAttack == "FUEGO" && enemyAttack == "TIERRA" ){
+            createMessage("Ganaste");
+            livesEnemy--;
+            spanEnemyLives.innerHTML = livesEnemy;
+        } else if ( playerAttack == "AGUA" && enemyAttack == "FUEGO") {
+            createMessage("Ganaste");
+            livesEnemy--;
+            spanEnemyLives.innerHTML = livesEnemy;
+        } else if ( playerAttack == "TIERRA" && enemyAttack == "AGUA" ) {
+            createMessage("Ganaste");
+            livesEnemy--;
+            spanEnemyLives.innerHTML = livesEnemy;
+        } else {
+            createMessage("Perdiste");
+            livesPlayer--;
+            spanPlayerLives.innerHTML = livesPlayer;
+        }
     }
 }
 
