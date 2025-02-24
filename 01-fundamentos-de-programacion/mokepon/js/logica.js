@@ -64,6 +64,16 @@ function elementalAttack(type){
 
 function randomEnemyAttack(){
     enemyAttack = elementalAttacksArray[random(0, 2)];
+
+    createMessage()
+}
+
+function createMessage () {
+    const paragraph = document.createElement('p');
+    const messages = document.getElementById('messages');
+
+    paragraph.innerHTML = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`;
+    messages.appendChild(paragraph);
 }
 
 function random(min, max) {
