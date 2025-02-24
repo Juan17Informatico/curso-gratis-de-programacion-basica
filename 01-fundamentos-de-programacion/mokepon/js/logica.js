@@ -1,22 +1,23 @@
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let playerAttack, enemyAttack;
-let livesEnemy = 3, livesPlayer = 3;
+let livesEnemy = 3,
+    livesPlayer = 3;
 
 function iniciarJuego() {
     let btnPetPlayer = document.getElementById("btn-pet");
     btnPetPlayer.addEventListener("click", selectPlayerPet);
 
-    const btnFire = document.getElementById('btn-fire');
-    btnFire.addEventListener('click', function() {
-        elementalAttack('FUEGO');
+    const btnFire = document.getElementById("btn-fire");
+    btnFire.addEventListener("click", function () {
+        elementalAttack("FUEGO");
     });
-    const btnWater = document.getElementById('btn-water');
-    btnWater.addEventListener('click', function(){
-        elementalAttack('AGUA');
+    const btnWater = document.getElementById("btn-water");
+    btnWater.addEventListener("click", function () {
+        elementalAttack("AGUA");
     });
-    const btnGround = document.getElementById('btn-ground');
-    btnGround.addEventListener('click', function(){
-        elementalAttack('TIERRA');
+    const btnGround = document.getElementById("btn-ground");
+    btnGround.addEventListener("click", function () {
+        elementalAttack("TIERRA");
     });
 }
 
@@ -58,55 +59,60 @@ function selectEnemyPet() {
     }
 }
 
-function elementalAttack(type){
+function elementalAttack(type) {
     playerAttack = type;
     elementalRandomEnemyAttack();
 }
 
-function elementalRandomEnemyAttack(){
+function elementalRandomEnemyAttack() {
     const attackRandomEnemy = random(0, 2);
     enemyAttack = elementalAttacksArray[attackRandomEnemy];
 
     fight();
 }
 
-function fight () {
+function fight() {
+    const spanPlayerLives = document.getElementById("lives-player");
+    const spanEnemyLives = document.getElementById("lives-enemy");
 
-    const spanPlayerLives =document.getElementById('lives-player');
-    const spanEnemyLives = document.getElementById('lives-enemy');
+    let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`
 
-    if( livesEnemy < 0 ){
-        alert("GANASTE EL JUEGO");
-    } else if ( livesPlayer < 0){
-        alert("PERDISTE EL JUEGO") 
+    if (enemyAttack == playerAttack) {
+        createMessage(`${attackMessage} - Empate`);
+    } else if (playerAttack == "FUEGO" && enemyAttack == "TIERRA") {
+        createMessage(`${attackMessage} - Ganaste`);
+        livesEnemy--;
+        spanEnemyLives.innerHTML = livesEnemy;
+    } else if (playerAttack == "AGUA" && enemyAttack == "FUEGO") {
+        createMessage(`${attackMessage} - Ganaste`);
+        livesEnemy--;
+        spanEnemyLives.innerHTML = livesEnemy;
+    } else if (playerAttack == "TIERRA" && enemyAttack == "AGUA") {
+        createMessage(`${attackMessage} - Ganaste`);
+        livesEnemy--;
+        spanEnemyLives.innerHTML = livesEnemy;
     } else {
-        if ( enemyAttack == playerAttack ) {
-            createMessage("Empate");
-        } else if ( playerAttack == "FUEGO" && enemyAttack == "TIERRA" ){
-            createMessage("Ganaste");
-            livesEnemy--;
-            spanEnemyLives.innerHTML = livesEnemy;
-        } else if ( playerAttack == "AGUA" && enemyAttack == "FUEGO") {
-            createMessage("Ganaste");
-            livesEnemy--;
-            spanEnemyLives.innerHTML = livesEnemy;
-        } else if ( playerAttack == "TIERRA" && enemyAttack == "AGUA" ) {
-            createMessage("Ganaste");
-            livesEnemy--;
-            spanEnemyLives.innerHTML = livesEnemy;
-        } else {
-            createMessage("Perdiste");
-            livesPlayer--;
-            spanPlayerLives.innerHTML = livesPlayer;
-        }
+        createMessage(`${attackMessage} - Perdiste`);
+        livesPlayer--;
+        spanPlayerLives.innerHTML = livesPlayer;
+    }
+
+    checkLives();
+}
+
+function checkLives(){
+    if(livesEnemy == 0){
+        createMessage("FELICITACIONES GANASTE 🎆");
+    } else if ( livesPlayer == 0 ) {
+        createMessage("PERDISTE POR MALO 😢");
     }
 }
 
-function createMessage ( resultFight ) {
-    const paragraph = document.createElement('p');
-    const messages = document.getElementById('messages');
+function createMessage(result) {
+    const messages = document.getElementById("messages");
+    const paragraph = document.createElement("p");
 
-    paragraph.innerHTML = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack} - ${resultFight}`;
+    paragraph.innerHTML = result;
     messages.appendChild(paragraph);
 }
 
