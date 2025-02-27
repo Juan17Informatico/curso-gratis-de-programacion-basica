@@ -19,6 +19,9 @@ function iniciarJuego() {
     btnGround.addEventListener("click", function () {
         elementalAttack("TIERRA");
     });
+
+    const botonReiniciar = document.getElementById('btn-reset');
+    botonReiniciar.addEventListener('click', reiniciarJuego);
 }
 
 function selectPlayerPet() {
@@ -75,7 +78,7 @@ function fight() {
     const spanPlayerLives = document.getElementById("lives-player");
     const spanEnemyLives = document.getElementById("lives-enemy");
 
-    let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`
+    let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`;
 
     if (enemyAttack == playerAttack) {
         createMessage(`${attackMessage} - Empate`);
@@ -100,20 +103,34 @@ function fight() {
     checkLives();
 }
 
-function checkLives(){
-    if(livesEnemy == 0){
-        createMessage("FELICITACIONES GANASTE 🎆");
-    } else if ( livesPlayer == 0 ) {
-        createMessage("PERDISTE POR MALO 😢");
+function checkLives() {
+    if (livesEnemy == 0) {
+        createMessage("FELICITACIONES GANASTE 🎆", true);
+    } else if (livesPlayer == 0) {
+        createMessage("PERDISTE POR MALO 😢", true);
     }
 }
 
-function createMessage(result) {
+function createMessage(result, disabledGame = false) {
     const messages = document.getElementById("messages");
     const paragraph = document.createElement("p");
 
     paragraph.innerHTML = result;
     messages.appendChild(paragraph);
+
+    if(disabledGame){
+        const btnFire = document.getElementById("btn-fire");
+        btnFire.disabled = true;
+        const btnWater = document.getElementById("btn-water");
+        btnWater.disabled = true;
+        const btnGround = document.getElementById("btn-ground");
+        btnGround.disabled = true;
+    }
+
+}
+
+function reiniciarJuego(){
+    location.reload();
 }
 
 function random(min, max) {
