@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.titulo{
+    color: lightcoral;
+    width: 100vw;
+    height: 50px;
+    background-color: teal;
+    text-align: center;
+}
+
+label {
+    background-color: tomtato;
+}
+
+input { 
+    background-color: aqua;
+}
+
+button {
+    background-color: blueviolet;
+}
