@@ -4,7 +4,12 @@ let livesEnemy = 3,
     livesPlayer = 3;
 
 function iniciarJuego() {
-    let btnPetPlayer = document.getElementById("btn-pet");
+    const sectionAttackSelect = document.getElementById('attack-select');
+    sectionAttackSelect.style.display = 'none';
+    const sectionReset = document.getElementById('reset');
+    sectionReset.style.display = 'none';
+    
+    const btnPetPlayer = document.getElementById("btn-pet");
     btnPetPlayer.addEventListener("click", selectPlayerPet);
 
     const btnFire = document.getElementById("btn-fire");
@@ -25,6 +30,10 @@ function iniciarJuego() {
 }
 
 function selectPlayerPet() {
+    const sectionPetPlayerSelect = document.getElementById('character-select');
+    sectionPetPlayerSelect.style.display = 'none';
+    const sectionAttackSelect = document.getElementById('attack-select');
+    sectionAttackSelect.style.display = 'block';
     // Selecciona todos los elementos con la clase "pets" (radio buttons)
     const pets = document.querySelectorAll(".pets");
 
@@ -125,6 +134,9 @@ function createMessage(result, disabledGame = false) {
         btnWater.disabled = true;
         const btnGround = document.getElementById("btn-ground");
         btnGround.disabled = true;
+        // Habilitar botón para reiniciar juego
+        const sectionReset = document.getElementById('reset');
+        sectionReset.style.display = 'block';
     }
 
 }
