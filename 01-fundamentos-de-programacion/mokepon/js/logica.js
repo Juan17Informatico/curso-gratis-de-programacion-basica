@@ -33,7 +33,7 @@ function selectPlayerPet() {
     const sectionPetPlayerSelect = document.getElementById('character-select');
     sectionPetPlayerSelect.style.display = 'none';
     const sectionAttackSelect = document.getElementById('attack-select');
-    sectionAttackSelect.style.display = 'block';
+    sectionAttackSelect.style.display = 'flex';
     // Selecciona todos los elementos con la clase "pets" (radio buttons)
     const pets = document.querySelectorAll(".pets");
 

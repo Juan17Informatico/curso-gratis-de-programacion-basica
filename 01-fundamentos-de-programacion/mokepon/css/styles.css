@@ -69,3 +69,17 @@ body{
     margin-top: 30px;
     width: 100px;
 }
+
+.attack-select{
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-attack{
+    background-color: #319DC4;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    width: 100px;
+    margin: 15px;
+}
