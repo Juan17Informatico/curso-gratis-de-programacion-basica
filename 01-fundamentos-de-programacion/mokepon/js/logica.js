@@ -121,11 +121,19 @@ function checkLives() {
 }
 
 function createMessage(result, disabledGame = false) {
-    const messages = document.getElementById("messages");
-    const paragraph = document.createElement("p");
+    const sectionMessages = document.getElementById("result");
+    const playerAttackDiv = document.getElementById("player-attack");
+    const enemyAttackDiv = document.getElementById("enemy-attack");
+    
+    const newPlayerAttackParagraph = document.createElement("p");
+    const newEnemyAttackParagraph = document.createElement("p");
 
-    paragraph.innerHTML = result;
-    messages.appendChild(paragraph);
+    sectionMessages.innerHTML = result;
+    newPlayerAttackParagraph.innerHTML = playerAttack;
+    newEnemyAttackParagraph.innerHTML = enemyAttack;
+
+    playerAttackDiv.appendChild(newPlayerAttackParagraph);
+    enemyAttackDiv.appendChild(newEnemyAttackParagraph);
 
     if(disabledGame){
         const btnFire = document.getElementById("btn-fire");

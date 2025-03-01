@@ -83,3 +83,19 @@ body{
     width: 100px;
     margin: 15px;
 }
+
+.section-messages{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 280px;
+    background-color: cadetblue;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.btn-reset{
+    border: none;
+    color: #046E8B;
+}

@@ -74,16 +74,16 @@
                 <button class="btn-attack" id="btn-ground">Tierra 🌱</button>
             </div>
 
-            <div>
-                <section id="messages">
-                    <!-- Tu mascota atacó con fuego, las mascota del enemigo atacó con tierra - GANASTE 🎉 -->
-                </section>
+            <div class="section-messages" id="messages">
+                <p id="result">Mucha suerte</p>
                 <section id="reset">
-                    <button id="btn-reset">Reiniciar</button>
+                    <button id="btn-reset" class="btn-reset">Reiniciar</button>
                 </section>
             </div>
 
             <div>
+                <div id="player-attack"></div>
+                <div id="enemy-attack"></div>
                 <p>
                     Tu mascota <span id="pet-player"></span> tiene
                     <span id="lives-player">3</span> vidas
