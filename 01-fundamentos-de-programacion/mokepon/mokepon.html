@@ -4,85 +4,95 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Mokepon!</title>
-        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/styles.css" />
     </head>
     <body>
         <section class="section-title">
-            <h1 class="titulo" >MOKEPON</h1>
+            <h1 class="titulo">MOKEPON</h1>
         </section>
         <section id="character-select" class="character-select-section">
-
-            <h2 class="subtitle" >Elige tu mascota:</h2>
+            <h2 class="subtitle">Elige tu mascota:</h2>
 
             <div class="cards">
-                <input type="radio" name="mascota" id="hipoge"  class="pets" value="hipoge">
+                <input type="radio" name="mascota" id="hipoge" class="pets" value="hipoge" />
                 <label class="mokepon-card" for="hipoge">
-                    <p>
-                        Hipoge
-                    </p>
-                    <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="hipoge">
-                </label><br>
-    
-                <input type="radio" name="mascota" id="capipepo"  class="pets" value="capipepo">
+                    <p>Hipoge</p>
+                    <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="hipoge" /> </label
+                ><br />
+
+                <input type="radio" name="mascota" id="capipepo" class="pets" value="capipepo" />
                 <label class="mokepon-card" for="capipepo">
-                    <p>
-                        Capipepo
-                    </p>
-                    <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="capipepo">
-                </label><br>
-    
-                <input type="radio" name="mascota" id="ratigueya"  class="pets" value="ratigueya">
+                    <p>Capipepo</p>
+                    <img
+                        src="./assets/mokepons_mokepon_capipepo_attack.png"
+                        alt="capipepo"
+                    /> </label
+                ><br />
+
+                <input type="radio" name="mascota" id="ratigueya" class="pets" value="ratigueya" />
                 <label class="mokepon-card" for="ratigueya">
-                    <p>
-                        Ratigueya
-                    </p>
-                    <img src="./assets/mokepons_mokepon_ratigueya_attack.png" alt="ratigueya">
-                </label><br>
-    
-                <input type="radio" name="mascota" id="langostelvis" class="pets" value="langostelvis">
+                    <p>Ratigueya</p>
+                    <img
+                        src="./assets/mokepons_mokepon_ratigueya_attack.png"
+                        alt="ratigueya"
+                    /> </label
+                ><br />
+
+                <input
+                    type="radio"
+                    name="mascota"
+                    id="langostelvis"
+                    class="pets"
+                    value="langostelvis"
+                />
                 <label class="mokepon-card" for="langostelvis">
-                    <p>
-                        Langostelvis
-                    </p>
-                    <img src="" alt="">
-                </label><br>
-    
-                <input type="radio" name="mascota" id="tucapalma" class="pets" value="tucapalma">
+                    <p>Langostelvis</p>
+                    <img src="" alt="" /> </label
+                ><br />
+
+                <input type="radio" name="mascota" id="tucapalma" class="pets" value="tucapalma" />
                 <label class="mokepon-card" for="tucapalma">
-                    <p>
-                        Tucapalma
-                    </p>
-                    <img src="" alt="">
-                </label><br>
-    
-                <input type="radio" name="mascota" id="pydos" class="pets" value="pydos">
+                    <p>Tucapalma</p>
+                    <img src="" alt="" /> </label
+                ><br />
+
+                <input type="radio" name="mascota" id="pydos" class="pets" value="pydos" />
                 <label class="mokepon-card" for="pydos">
-                    <p>
-                        Pydos
-                    </p>
-                    <img src="" alt="">
-                </label><br>
+                    <p>Pydos</p>
+                    <img src="" alt="" /> </label
+                ><br />
             </div>
-            <button id="btn-pet" class="btn-pet" >Seleccionar</button>
+            <button id="btn-pet" class="btn-pet">Seleccionar</button>
         </section>
+
         <section id="attack-select">
             <h2>Elige tu ataque:</h2>
-            <p>Tu mascota <span id="pet-player"></span> tiene <span id="lives-player" >3</span> vidas</p>
-            <p>La mascota <span id="pet-enemy"></span> del enemigo tiene <span id="lives-enemy" >3</span> vidas</p>
-            <p>
+            <div>
                 <button id="btn-fire">Fuego 🔥</button>
                 <button id="btn-water">Agua 💧</button>
                 <button id="btn-ground">Tierra 🌱</button>
-            </p>
+            </div>
+            <div>
+                <section id="messages">
+                    <!-- Tu mascota atacó con fuego, las mascota del enemigo atacó con tierra - GANASTE 🎉 -->
+                </section>
+                <section id="reset">
+                    <button id="btn-reset">Reiniciar</button>
+                </section>
+            </div>
+
+            <div>
+                <p>
+                    Tu mascota <span id="pet-player"></span> tiene
+                    <span id="lives-player">3</span> vidas
+                </p>
+                <p>
+                    La mascota <span id="pet-enemy"></span> del enemigo tiene
+                    <span id="lives-enemy">3</span> vidas
+                </p>
+            </div>
         </section>
 
-        <section id="messages" >
-            <!-- Tu mascota atacó con fuego, las mascota del enemigo atacó con tierra - GANASTE 🎉 -->
-        </section>
-
-        <section id="reset">
-            <button id="btn-reset">Reiniciar</button>
-        </section>
         <script src="./js/logica.js"></script>
     </body>
 </html>
