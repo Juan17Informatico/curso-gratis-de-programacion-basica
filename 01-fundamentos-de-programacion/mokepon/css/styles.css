@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
 * {
     box-sizing: border-box;
     font-family: "Fredoka", serif;
@@ -6,11 +6,11 @@
     padding: 0;
 }
 
-body{
+body {
     background-color: #051014;
 }
 
-.section-title{
+.section-title {
     align-content: center;
     height: 100px;
     max-width: 100vw;
@@ -30,12 +30,12 @@ body{
     padding: 5px;
 }
 
-.subtitle{
+.subtitle {
     color: white;
     font-size: 20px;
 }
 
-.cards{
+.cards {
     display: flex;
     gap: 10px;
     max-width: 100%;
@@ -43,21 +43,21 @@ body{
     flex-wrap: wrap;
 }
 
-.mokepon-card{
+.mokepon-card {
     width: 200px;
     height: 100px;
-    background-color: #046E8B;
+    background-color: #046e8b;
     padding: 10px;
     border-radius: 15px;
     display: flex;
     color: whitesmoke;
 }
 
-.mokepon-card img{
-    width: 80px;;
+.mokepon-card img {
+    width: 80px;
 }
 
-.btn-pet{
+.btn-pet {
     background-color: darkcyan;
     border-radius: 5px;
     border: none;
@@ -70,13 +70,13 @@ body{
     width: 100px;
 }
 
-.attack-select{
+.attack-select {
     align-items: center;
     flex-direction: column;
 }
 
-.btn-attack{
-    background-color: #319DC4;
+.btn-attack {
+    background-color: #319dc4;
     padding: 10px;
     border-radius: 15px;
     border: none;
@@ -84,7 +84,7 @@ body{
     margin: 15px;
 }
 
-.section-messages{
+.section-messages {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -95,7 +95,18 @@ body{
     border-radius: 20px;
 }
 
-.btn-reset{
+.btn-reset {
     border: none;
-    color: #046E8B;
+    color: #046e8b;
+}
+
+.attacks {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.attacks div p{
+    font-size: 14px;
 }
