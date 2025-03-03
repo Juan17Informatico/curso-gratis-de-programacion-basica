@@ -35,12 +35,17 @@ body {
     font-size: 20px;
 }
 
-.cards {
+.cards, .btn-attacks-container {
     display: flex;
     gap: 10px;
     max-width: 100%;
     min-height: 100%;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+input {
+    display: none;
 }
 
 .mokepon-card {
@@ -51,6 +56,7 @@ body {
     border-radius: 15px;
     display: flex;
     color: whitesmoke;
+    cursor: pointer;
 }
 
 .mokepon-card img {
@@ -107,6 +113,20 @@ body {
     color: whitesmoke;
 }
 
-.attacks div p{
-    font-size: 14px;
+.attacks div #lives-player, .attacks div #lives-enemy{
+    font-size: 36px;
+}
+
+.enemy-attacks, .player-attacks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 400px) {
+
+    .btn-attacks-container{
+        flex-direction: column;
+    }
+
 }
