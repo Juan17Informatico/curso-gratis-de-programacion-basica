@@ -83,6 +83,11 @@ input:checked + label {
     height: 50px;
     margin-top: 30px;
     width: 100px;
+    transition: background-color ease-out 0.3s;
+}
+
+.btn-pet:hover{
+    background-color: #45C1E4;
 }
 
 .attack-select {
