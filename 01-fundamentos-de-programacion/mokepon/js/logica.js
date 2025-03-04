@@ -30,13 +30,8 @@ function iniciarJuego() {
 }
 
 function selectPlayerPet() {
-    const sectionPetPlayerSelect = document.getElementById('character-select');
-    sectionPetPlayerSelect.style.display = 'none';
-    const sectionAttackSelect = document.getElementById('attack-select');
-    sectionAttackSelect.style.display = 'flex';
     // Selecciona todos los elementos con la clase "pets" (radio buttons)
     const pets = document.querySelectorAll(".pets");
-
     const spanPlayerPet = document.getElementById("pet-player");
 
     const selected = [...pets].find((element) => {
@@ -45,17 +40,25 @@ function selectPlayerPet() {
             const charToUpperCase = element.value.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
             const formattedText = charToUpperCase + element.value.slice(1);
             spanPlayerPet.innerHTML = formattedText;
-            return element; // Retorna `true` para detener la iteración
+            return element; // Retorna el elemento que coincida con la condición
         }
         return false; // Continúa iterando si el elemento no está seleccionado
     });
 
-    // Si ninguna mascota fue seleccionada, muestra una alerta al usuario
-    if (!selected) {
-        alert("No seleccionaste ninguna mascota!");
+    // Si la mascota fue seleccionada, muestra la siguiente sección
+    if (selected) {
+        // Mostrar siguiente sección y esconder la selección de personajes
+        const sectionPetPlayerSelect = document.getElementById('character-select');
+        sectionPetPlayerSelect.style.display = 'none';
+        const sectionAttackSelect = document.getElementById('attack-select');
+        sectionAttackSelect.style.display = 'flex';
+
+        selectEnemyPet();
+        return;
     }
 
-    selectEnemyPet();
+    alert("No seleccionaste ninguna mascota!");
+
 }
 
 function selectEnemyPet() {
