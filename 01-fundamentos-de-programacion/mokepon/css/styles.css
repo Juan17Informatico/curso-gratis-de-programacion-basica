@@ -50,17 +50,19 @@ input {
 
 .mokepon-card {
     width: 200px;
-    height: 100px;
+    height: 200px;
     background-color: #046e8b;
     padding: 10px;
     border-radius: 15px;
     display: flex;
+    flex-direction: column;
     color: whitesmoke;
     cursor: pointer;
 }
 
 .mokepon-card img {
-    width: 80px;
+    width: 150px;
+    height: 150px;
 }
 
 .btn-pet {
