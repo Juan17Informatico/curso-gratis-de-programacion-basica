@@ -4,11 +4,11 @@ let livesEnemy = 3,
     livesPlayer = 3;
 
 function iniciarJuego() {
-    const sectionAttackSelect = document.getElementById('attack-select');
-    sectionAttackSelect.style.display = 'none';
-    const sectionReset = document.getElementById('reset');
-    sectionReset.style.display = 'none';
-    
+    const sectionAttackSelect = document.getElementById("attack-select");
+    sectionAttackSelect.style.display = "none";
+    const sectionReset = document.getElementById("reset");
+    sectionReset.style.display = "none";
+
     const btnPetPlayer = document.getElementById("btn-pet");
     btnPetPlayer.addEventListener("click", selectPlayerPet);
 
@@ -25,8 +25,8 @@ function iniciarJuego() {
         elementalAttack("TIERRA");
     });
 
-    const botonReiniciar = document.getElementById('btn-reset');
-    botonReiniciar.addEventListener('click', reiniciarJuego);
+    const botonReiniciar = document.getElementById("btn-reset");
+    botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function selectPlayerPet() {
@@ -48,17 +48,16 @@ function selectPlayerPet() {
     // Si la mascota fue seleccionada, muestra la siguiente sección
     if (selected) {
         // Mostrar siguiente sección y esconder la selección de personajes
-        const sectionPetPlayerSelect = document.getElementById('character-select');
-        sectionPetPlayerSelect.style.display = 'none';
-        const sectionAttackSelect = document.getElementById('attack-select');
-        sectionAttackSelect.style.display = 'flex';
+        const sectionPetPlayerSelect = document.getElementById("character-select");
+        sectionPetPlayerSelect.style.display = "none";
+        const sectionAttackSelect = document.getElementById("attack-select");
+        sectionAttackSelect.style.display = "flex";
 
         selectEnemyPet();
         return;
     }
 
     alert("No seleccionaste ninguna mascota!");
-
 }
 
 function selectEnemyPet() {
@@ -127,7 +126,7 @@ function createMessage(result, disabledGame = false) {
     const sectionMessages = document.getElementById("result");
     const playerAttackDiv = document.getElementById("player-attack");
     const enemyAttackDiv = document.getElementById("enemy-attack");
-    
+
     const newPlayerAttackParagraph = document.createElement("p");
     const newEnemyAttackParagraph = document.createElement("p");
 
@@ -138,7 +137,7 @@ function createMessage(result, disabledGame = false) {
     playerAttackDiv.appendChild(newPlayerAttackParagraph);
     enemyAttackDiv.appendChild(newEnemyAttackParagraph);
 
-    if(disabledGame){
+    if (disabledGame) {
         const btnFire = document.getElementById("btn-fire");
         btnFire.disabled = true;
         const btnWater = document.getElementById("btn-water");
@@ -146,13 +145,12 @@ function createMessage(result, disabledGame = false) {
         const btnGround = document.getElementById("btn-ground");
         btnGround.disabled = true;
         // Habilitar botón para reiniciar juego
-        const sectionReset = document.getElementById('reset');
-        sectionReset.style.display = 'block';
+        const sectionReset = document.getElementById("reset");
+        sectionReset.style.display = "block";
     }
-
 }
 
-function reiniciarJuego(){
+function reiniciarJuego() {
     location.reload();
 }
 
