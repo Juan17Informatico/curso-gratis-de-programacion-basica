@@ -49,12 +49,6 @@ input {
     display: none;
 }
 
-input:checked + label {
-    background-color: #022F3B;
-    box-shadow: 0px 2px 10px rgba(253, 253, 253, 0.8);
-
-}
-
 .mokepon-card {
     background-color: #046e8b;
     border-radius: 15px;
@@ -65,6 +59,13 @@ input:checked + label {
     height: 200px;
     padding: 10px;
     width: 200px;
+    transition: all ease-in-out 0.2s;
+}
+
+input:checked + label {
+    background-color: #022F3B;
+    box-shadow: 0px 2px 10px rgba(253, 253, 253, 0.8);
+
 }
 
 .mokepon-card img {
