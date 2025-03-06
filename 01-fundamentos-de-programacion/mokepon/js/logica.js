@@ -93,9 +93,7 @@ const selectPlayerPet = () => {
     if (selected) {
         // Mostrar siguiente sección y esconder la selección de personajes
         sectionPetPlayerSelect.style.display = "none";
-
         sectionAttackSelect.style.display = "flex";
-
         selectEnemyPet();
         return;
     }
