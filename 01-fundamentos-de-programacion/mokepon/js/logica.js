@@ -1,39 +1,41 @@
+const sectionAttackSelect = document.getElementById("attack-select");
+const sectionReset = document.getElementById("reset");
+const btnPetPlayer = document.getElementById("btn-pet");
+const btnFire = document.getElementById("btn-fire");
+const btnWater = document.getElementById("btn-water");
+const btnGround = document.getElementById("btn-ground");
+const botonReiniciar = document.getElementById("btn-reset");
+
+// Selecciona todos los elementos con la clase "pets" (radio buttons)
+const pets = document.querySelectorAll(".pets");
+const spanPlayerPet = document.getElementById("pet-player");
+const sectionPetPlayerSelect = document.getElementById("character-select");
+
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let playerAttack, enemyAttack;
 let livesEnemy = 3,
     livesPlayer = 3;
 
 function iniciarJuego() {
-    const sectionAttackSelect = document.getElementById("attack-select");
     sectionAttackSelect.style.display = "none";
-    const sectionReset = document.getElementById("reset");
     sectionReset.style.display = "none";
 
-    const btnPetPlayer = document.getElementById("btn-pet");
     btnPetPlayer.addEventListener("click", selectPlayerPet);
 
-    const btnFire = document.getElementById("btn-fire");
     btnFire.addEventListener("click", function () {
         elementalAttack("FUEGO");
     });
-    const btnWater = document.getElementById("btn-water");
     btnWater.addEventListener("click", function () {
         elementalAttack("AGUA");
     });
-    const btnGround = document.getElementById("btn-ground");
     btnGround.addEventListener("click", function () {
         elementalAttack("TIERRA");
     });
 
-    const botonReiniciar = document.getElementById("btn-reset");
     botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function selectPlayerPet() {
-    // Selecciona todos los elementos con la clase "pets" (radio buttons)
-    const pets = document.querySelectorAll(".pets");
-    const spanPlayerPet = document.getElementById("pet-player");
-
     const selected = [...pets].find((element) => {
         if (element.checked) {
             // Verifica si el elemento está seleccionado
@@ -48,9 +50,8 @@ function selectPlayerPet() {
     // Si la mascota fue seleccionada, muestra la siguiente sección
     if (selected) {
         // Mostrar siguiente sección y esconder la selección de personajes
-        const sectionPetPlayerSelect = document.getElementById("character-select");
         sectionPetPlayerSelect.style.display = "none";
-        const sectionAttackSelect = document.getElementById("attack-select");
+
         sectionAttackSelect.style.display = "flex";
 
         selectEnemyPet();
