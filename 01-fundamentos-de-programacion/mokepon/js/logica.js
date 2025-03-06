@@ -24,6 +24,7 @@ const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let playerAttack, enemyAttack;
 let livesEnemy = 3,
     livesPlayer = 3;
+const mokepones = [];
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -33,11 +34,15 @@ class Mokepon {
     }
 }
 
-let ratigueya = new Mokepon('Ratigueya', '../assets/ratigueya.png', 5);
-let capipepo = new Mokepon('Capipepo', '../assets/capipepo.png', 3);
+let ratigueya = new Mokepon("Ratigueya", "../assets/ratigueya.png", 5);
+let capipepo = new Mokepon("Capipepo", "../assets/capipepo.png", 3);
 
-console.log(ratigueya, capipepo)
 
+dataMokepones.forEach(element => {
+    mokepones.push(new Mokepon(element.name, element.photo, element.live));
+});
+
+console.log(mokepones);
 const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
@@ -55,7 +60,7 @@ const iniciarJuego = () => {
     });
 
     botonReiniciar.addEventListener("click", reiniciarJuego);
-}
+};
 
 const selectPlayerPet = () => {
     const selected = [...pets].find((element) => {
@@ -81,7 +86,7 @@ const selectPlayerPet = () => {
     }
 
     alert("No seleccionaste ninguna mascota!");
-}
+};
 
 const selectEnemyPet = () => {
     const petsArray = [...pets];
@@ -92,19 +97,19 @@ const selectEnemyPet = () => {
         const formattedText = charToUpperCase + petsArray[randomAttackEnemy].value.slice(1);
         spanEnemyPet.innerHTML = formattedText;
     }
-}
+};
 
-const elementalAttack  = (type) => {
+const elementalAttack = (type) => {
     playerAttack = type;
     elementalRandomEnemyAttack();
-}
+};
 
 const elementalRandomEnemyAttack = () => {
     const attackRandomEnemy = random(0, 2);
     enemyAttack = elementalAttacksArray[attackRandomEnemy];
 
     fight();
-}
+};
 
 const fight = () => {
     let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`;
@@ -130,7 +135,7 @@ const fight = () => {
     }
 
     checkLives();
-}
+};
 
 const checkLives = () => {
     if (livesEnemy == 0) {
@@ -138,7 +143,7 @@ const checkLives = () => {
     } else if (livesPlayer == 0) {
         createMessage("PERDISTE POR MALO 😢", true);
     }
-}
+};
 
 const createMessage = (result, disabledGame = false) => {
     const newPlayerAttackParagraph = document.createElement("p");
@@ -158,14 +163,14 @@ const createMessage = (result, disabledGame = false) => {
         // Habilitar botón para reiniciar juego
         sectionReset.style.display = "block";
     }
-}
+};
 
 const reiniciarJuego = () => {
     location.reload();
-}
+};
 
 const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
-}
+};
 
 window.addEventListener("load", iniciarJuego);
