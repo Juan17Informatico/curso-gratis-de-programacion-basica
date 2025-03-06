@@ -139,14 +139,10 @@ function createMessage(result, disabledGame = false) {
     enemyAttackDiv.appendChild(newEnemyAttackParagraph);
 
     if (disabledGame) {
-        const btnFire = document.getElementById("btn-fire");
         btnFire.disabled = true;
-        const btnWater = document.getElementById("btn-water");
         btnWater.disabled = true;
-        const btnGround = document.getElementById("btn-ground");
         btnGround.disabled = true;
         // Habilitar botón para reiniciar juego
-        const sectionReset = document.getElementById("reset");
         sectionReset.style.display = "block";
     }
 }
