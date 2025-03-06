@@ -1,7 +1,7 @@
 const dataMokepones = [
     {
-        name: "Capipepo",
-        photo: "../assets/capipepo.png",
+        name: "capipepo",
+        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/capipepo.png",
         live: 3,
         attacks: [
             {
@@ -28,8 +28,8 @@ const dataMokepones = [
         // another props
     },
     {
-        name: "Hipoge",
-        photo: "../assets/hipoge.png",
+        name: "hipoge",
+        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/hipoge.png",
         live: 3,
         attacks: [
             {
@@ -56,8 +56,8 @@ const dataMokepones = [
         // another props
     },
     {
-        name: "Langostelvis",
-        photo: "../assets/langostelvis.png",
+        name: "langostelvis",
+        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/langostelvis.png",
         live: 3,
         attacks: [
             {
@@ -67,8 +67,8 @@ const dataMokepones = [
         // another props
     },
     {
-        name: "Pydos",
-        photo: "../assets/pydos.png",
+        name: "pydos",
+        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/pydos.png",
         live: 3,
         attacks: [
             {
@@ -78,8 +78,8 @@ const dataMokepones = [
         // another props
     },
     {
-        name: "Ratigueya",
-        photo: "../assets/ratigueya.png",
+        name: "ratigueya",
+        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/ratigueya.png",
         live: 3,
         attacks: [
             {
@@ -106,8 +106,8 @@ const dataMokepones = [
         // another props
     },
     {
-        name: "Tucapalma",
-        photo: "../assets/tucapalma.png",
+        name: "tucapalma",
+        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/tucapalma.png",
         live: 3,
         attacks: [
             {

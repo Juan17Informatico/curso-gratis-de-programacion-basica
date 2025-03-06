@@ -5,6 +5,7 @@ const btnFire = document.getElementById("btn-fire");
 const btnWater = document.getElementById("btn-water");
 const btnGround = document.getElementById("btn-ground");
 const botonReiniciar = document.getElementById("btn-reset");
+const cardsContainer = document.getElementById('cards');
 
 // Selecciona todos los elementos con la clase "pets" (radio buttons)
 const pets = document.querySelectorAll(".pets");
@@ -21,6 +22,7 @@ const playerAttackDiv = document.getElementById("player-attack");
 const enemyAttackDiv = document.getElementById("enemy-attack");
 
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
+let optionMokepones;
 let playerAttack, enemyAttack;
 let livesEnemy = 3,
     livesPlayer = 3;
@@ -41,11 +43,23 @@ dataMokepones.forEach(element => {
     mokepones.push(mokepon);
 });
 
-console.log(mokepones);
-
 const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
+
+    mokepones.forEach( mokepon => {
+        const charToUpperCase = mokepon.name.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
+        const formattedText = charToUpperCase + mokepon.name.slice(1);
+        console.log(mokepon.photo);
+        optionMokepones = `
+            <input type="radio" name="pets" id=${mokepon.name} class="pets" value=${mokepon.name} />
+            <label class="mokepon-card" for=${mokepon.name}>
+                <p>${formattedText}</p>
+                <img src=${mokepon.photo} alt=${mokepon.name} />
+            </label><br />
+        `;
+        cardsContainer.innerHTML += optionMokepones;
+    });
 
     btnPetPlayer.addEventListener("click", selectPlayerPet);
 
