@@ -25,7 +25,7 @@ let playerAttack, enemyAttack;
 let livesEnemy = 3,
     livesPlayer = 3;
 
-function iniciarJuego() {
+const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
 
@@ -44,7 +44,7 @@ function iniciarJuego() {
     botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
-function selectPlayerPet() {
+const selectPlayerPet = () => {
     const selected = [...pets].find((element) => {
         if (element.checked) {
             // Verifica si el elemento está seleccionado
@@ -70,7 +70,7 @@ function selectPlayerPet() {
     alert("No seleccionaste ninguna mascota!");
 }
 
-function selectEnemyPet() {
+const selectEnemyPet = () => {
     const petsArray = [...pets];
     const randomAttackEnemy = random(0, petsArray.length - 1);
 
@@ -81,19 +81,19 @@ function selectEnemyPet() {
     }
 }
 
-function elementalAttack(type) {
+const elementalAttack  = (type) => {
     playerAttack = type;
     elementalRandomEnemyAttack();
 }
 
-function elementalRandomEnemyAttack() {
+const elementalRandomEnemyAttack = () => {
     const attackRandomEnemy = random(0, 2);
     enemyAttack = elementalAttacksArray[attackRandomEnemy];
 
     fight();
 }
 
-function fight() {
+const fight = () => {
     let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`;
 
     if (enemyAttack == playerAttack) {
@@ -119,7 +119,7 @@ function fight() {
     checkLives();
 }
 
-function checkLives() {
+const checkLives = () => {
     if (livesEnemy == 0) {
         createMessage("FELICITACIONES GANASTE 🎆", true);
     } else if (livesPlayer == 0) {
@@ -127,7 +127,7 @@ function checkLives() {
     }
 }
 
-function createMessage(result, disabledGame = false) {
+const createMessage = (result, disabledGame = false) => {
     const newPlayerAttackParagraph = document.createElement("p");
     const newEnemyAttackParagraph = document.createElement("p");
 
@@ -147,11 +147,11 @@ function createMessage(result, disabledGame = false) {
     }
 }
 
-function reiniciarJuego() {
+const reiniciarJuego = () => {
     location.reload();
 }
 
-function random(min, max) {
+const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
