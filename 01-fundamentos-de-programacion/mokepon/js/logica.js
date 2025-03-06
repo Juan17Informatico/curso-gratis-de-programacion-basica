@@ -31,18 +31,18 @@ class Mokepon {
         this.name = name;
         this.photo = photo;
         this.live = live;
+        this.attacks = [];
     }
 }
 
-let ratigueya = new Mokepon("Ratigueya", "../assets/ratigueya.png", 5);
-let capipepo = new Mokepon("Capipepo", "../assets/capipepo.png", 3);
-
-
 dataMokepones.forEach(element => {
-    mokepones.push(new Mokepon(element.name, element.photo, element.live));
+    const mokepon = new Mokepon(element.name, element.photo, element.live);
+    mokepon.attacks = [...element.attacks];
+    mokepones.push(mokepon);
 });
 
 console.log(mokepones);
+
 const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
