@@ -25,6 +25,19 @@ let playerAttack, enemyAttack;
 let livesEnemy = 3,
     livesPlayer = 3;
 
+class Mokepon {
+    constructor(name, photo, live) {
+        this.name = name;
+        this.photo = photo;
+        this.live = live;
+    }
+}
+
+let ratigueya = new Mokepon('Ratigueya', '../assets/ratigueya.png', 5);
+let capipepo = new Mokepon('Capipepo', '../assets/capipepo.png', 3);
+
+console.log(ratigueya, capipepo)
+
 const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
