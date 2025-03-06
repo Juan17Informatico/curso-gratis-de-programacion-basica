@@ -16,6 +16,10 @@ const spanEnemyPet = document.getElementById("pet-enemy");
 const spanPlayerLives = document.getElementById("lives-player");
 const spanEnemyLives = document.getElementById("lives-enemy");
 
+const sectionMessages = document.getElementById("result");
+const playerAttackDiv = document.getElementById("player-attack");
+const enemyAttackDiv = document.getElementById("enemy-attack");
+
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let playerAttack, enemyAttack;
 let livesEnemy = 3,
@@ -90,7 +94,6 @@ function elementalRandomEnemyAttack() {
 }
 
 function fight() {
-
     let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`;
 
     if (enemyAttack == playerAttack) {
@@ -125,10 +128,6 @@ function checkLives() {
 }
 
 function createMessage(result, disabledGame = false) {
-    const sectionMessages = document.getElementById("result");
-    const playerAttackDiv = document.getElementById("player-attack");
-    const enemyAttackDiv = document.getElementById("enemy-attack");
-
     const newPlayerAttackParagraph = document.createElement("p");
     const newEnemyAttackParagraph = document.createElement("p");
 
