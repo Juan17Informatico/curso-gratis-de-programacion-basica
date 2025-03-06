@@ -11,6 +11,8 @@ const pets = document.querySelectorAll(".pets");
 const spanPlayerPet = document.getElementById("pet-player");
 const sectionPetPlayerSelect = document.getElementById("character-select");
 
+const spanEnemyPet = document.getElementById("pet-enemy");
+
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let playerAttack, enemyAttack;
 let livesEnemy = 3,
@@ -62,10 +64,8 @@ function selectPlayerPet() {
 }
 
 function selectEnemyPet() {
-    const pets = document.querySelectorAll(".pets");
     const petsArray = [...pets];
     const randomAttackEnemy = random(0, petsArray.length - 1);
-    const spanEnemyPet = document.getElementById("pet-enemy");
 
     if (petsArray[randomAttackEnemy]) {
         const charToUpperCase = petsArray[randomAttackEnemy].value.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
