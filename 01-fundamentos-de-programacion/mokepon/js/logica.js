@@ -27,6 +27,7 @@ let playerAttack, enemyAttack;
 let livesEnemy = 3,
     livesPlayer = 3;
 const mokepones = [];
+let playerPet;
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -84,6 +85,7 @@ const selectPlayerPet = () => {
             const charToUpperCase = element.value.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
             const formattedText = charToUpperCase + element.value.slice(1);
             spanPlayerPet.innerHTML = formattedText;
+            playerPet = element.value;
             return element; // Retorna el elemento que coincida con la condición
         }
         return false; // Continúa iterando si el elemento no está seleccionado
@@ -94,12 +96,28 @@ const selectPlayerPet = () => {
         // Mostrar siguiente sección y esconder la selección de personajes
         sectionPetPlayerSelect.style.display = "none";
         sectionAttackSelect.style.display = "flex";
+        getAttacks(playerPet);
         selectEnemyPet();
         return;
     }
 
     alert("No seleccionaste ninguna mascota!");
 };
+
+const getAttacks = (playerPetString) => {
+    let attacks;
+    for (let i = 0; i < mokepones.length; i++) {
+        if(playerPetString === mokepones[i].name){
+            attacks = mokepones[i].attacks;
+        }
+    }
+    console.log(attacks);
+    mostrarAtaques(attacks);
+}
+
+const mostrarAtaques = ( arrayAttacks ) => {
+
+}
 
 const selectEnemyPet = () => {
     const petsArray = [...pets];
