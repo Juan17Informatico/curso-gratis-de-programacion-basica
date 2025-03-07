@@ -1,11 +1,8 @@
 const sectionAttackSelect = document.getElementById("attack-select");
 const sectionReset = document.getElementById("reset");
 const btnPetPlayer = document.getElementById("btn-pet");
-const btnFire = document.getElementById("btn-fire");
-const btnWater = document.getElementById("btn-water");
-const btnGround = document.getElementById("btn-ground");
 const botonReiniciar = document.getElementById("btn-reset");
-const cardsContainer = document.getElementById('cards');
+const cardsContainer = document.getElementById("cards");
 
 // Selecciona todos los elementos con la clase "pets" (radio buttons)
 const spanPlayerPet = document.getElementById("pet-player");
@@ -20,6 +17,8 @@ const sectionMessages = document.getElementById("result");
 const playerAttackDiv = document.getElementById("player-attack");
 const enemyAttackDiv = document.getElementById("enemy-attack");
 
+const btnAttacksContainerId = document.getElementById("btn-attacks-container-id");
+
 let pets;
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let optionMokepones;
@@ -28,6 +27,9 @@ let livesEnemy = 3,
     livesPlayer = 3;
 const mokepones = [];
 let playerPet;
+let btnFire;
+let btnWater;
+let btnGround;
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -38,7 +40,7 @@ class Mokepon {
     }
 }
 
-dataMokepones.forEach(element => {
+dataMokepones.forEach((element) => {
     const mokepon = new Mokepon(element.name, element.photo, element.live);
     mokepon.attacks = [...element.attacks];
     mokepones.push(mokepon);
@@ -48,7 +50,7 @@ const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
 
-    mokepones.forEach( mokepon => {
+    mokepones.forEach((mokepon) => {
         const charToUpperCase = mokepon.name.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
         const formattedText = charToUpperCase + mokepon.name.slice(1);
         optionMokepones = `
@@ -64,17 +66,6 @@ const iniciarJuego = () => {
     pets = document.querySelectorAll(".pets");
 
     btnPetPlayer.addEventListener("click", selectPlayerPet);
-
-    btnFire.addEventListener("click", function () {
-        elementalAttack("FUEGO");
-    });
-    btnWater.addEventListener("click", function () {
-        elementalAttack("AGUA");
-    });
-    btnGround.addEventListener("click", function () {
-        elementalAttack("TIERRA");
-    });
-
     botonReiniciar.addEventListener("click", reiniciarJuego);
 };
 
@@ -107,17 +98,32 @@ const selectPlayerPet = () => {
 const getAttacks = (playerPetString) => {
     let attacks;
     for (let i = 0; i < mokepones.length; i++) {
-        if(playerPetString === mokepones[i].name){
+        if (playerPetString === mokepones[i].name) {
             attacks = mokepones[i].attacks;
         }
     }
-    console.log(attacks);
-    mostrarAtaques(attacks);
-}
+    showAttacks(attacks);
+};
 
-const mostrarAtaques = ( arrayAttacks ) => {
+const showAttacks = (arrayAttacks) => {
+    arrayAttacks.forEach((attack) => {
+        btnAttacksContainerId.innerHTML += `<button class="btn-attack" id=${attack.id}>${attack.name}</button>`;
+    });
 
-}
+    btnFire = document.getElementById("btn-fire");
+    btnWater = document.getElementById("btn-water");
+    btnGround = document.getElementById("btn-ground");
+
+    btnFire.addEventListener("click", function () {
+        elementalAttack("FUEGO");
+    });
+    btnWater.addEventListener("click", function () {
+        elementalAttack("AGUA");
+    });
+    btnGround.addEventListener("click", function () {
+        elementalAttack("TIERRA");
+    });
+};
 
 const selectEnemyPet = () => {
     const petsArray = [...pets];
