@@ -22,7 +22,8 @@ const btnAttacksContainerId = document.getElementById("btn-attacks-container-id"
 let pets;
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let optionMokepones;
-let playerAttack = [], enemyAttack;
+let playerAttack = [],
+    enemyAttack = [];
 let livesEnemy = 3,
     livesPlayer = 3;
 const mokepones = [];
@@ -32,6 +33,7 @@ let btnWater;
 let btnGround;
 let buttons;
 let playerAttackTextContent = [];
+let enemyMokeponAttack;
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -109,37 +111,35 @@ const getAttacks = (playerPetString) => {
 
 const showAttacks = (arrayAttacks) => {
     arrayAttacks.forEach((attack) => {
-        btnAttacksContainerId.innerHTML += 
-            `<button class="btn-attack bAttack" id=${attack.id}>${attack.name}</button>`;
+        btnAttacksContainerId.innerHTML += `<button class="btn-attack bAttack" id=${attack.id}>${attack.name}</button>`;
     });
 
     btnFire = document.getElementById("btn-fire");
     btnWater = document.getElementById("btn-water");
     btnGround = document.getElementById("btn-ground");
-    buttons = document.querySelectorAll('.bAttack');
+    buttons = document.querySelectorAll(".bAttack");
 };
 
 const attackSequence = () => {
-    buttons.forEach(button => {
-
-        button.addEventListener('click', ({ target }) => {
-            if( target.textContent === "🔥"){
-                playerAttack.push('FUEGO');
+    buttons.forEach((button) => {
+        button.addEventListener("click", ({ target }) => {
+            if (target.textContent === "🔥") {
+                playerAttack.push("FUEGO");
                 console.log(playerAttack);
                 button.style.background = "#112f58";
             } else if (target.textContent === "💧") {
-                playerAttack.push('AGUA');
+                playerAttack.push("AGUA");
                 console.log(playerAttack);
                 button.style.background = "#112f58";
             } else {
-                playerAttack.push('TIERRA');
+                playerAttack.push("TIERRA");
                 console.log(playerAttack);
                 button.style.background = "#112f58";
             }
+            elementalRandomEnemyAttack();
         });
-
     });
-}
+};
 
 const selectEnemyPet = () => {
     const petsArray = [...pets];
@@ -149,14 +149,16 @@ const selectEnemyPet = () => {
         const charToUpperCase = petsArray[randomAttackEnemy].value.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
         const formattedText = charToUpperCase + petsArray[randomAttackEnemy].value.slice(1);
         spanEnemyPet.innerHTML = formattedText;
+        enemyMokeponAttack = petsArray[randomAttackEnemy].attacks;
         attackSequence();
     }
 };
 
 const elementalRandomEnemyAttack = () => {
-    const attackRandomEnemy = random(0, 2);
-    enemyAttack = elementalAttacksArray[attackRandomEnemy];
-
+    const attackRandomEnemy = random(0, enemyMokeponAttack.length - 1);
+    enemyAttack.push(elementalAttacksArray[attackRandomEnemy]);
+    console.log(enemyAttack);
+    
     fight();
 };
 
