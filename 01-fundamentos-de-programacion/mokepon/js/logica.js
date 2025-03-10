@@ -19,6 +19,9 @@ const enemyAttackDiv = document.getElementById("enemy-attack");
 
 const btnAttacksContainerId = document.getElementById("btn-attacks-container-id");
 
+const sectionSeeMap = document.getElementById('see-map');
+const map = document.getElementById('map');
+
 let pets;
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let optionMokepones;
@@ -37,6 +40,9 @@ let playerVictory = 0,
 let indexPlayerAttack, indexEnemyAttack;
 let playerAttackTextContent = [];
 let enemyMokeponAttack = [];
+let canvas = map.getContext("2d");
+
+
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -53,9 +59,13 @@ dataMokepones.forEach((element) => {
     mokepones.push(mokepon);
 });
 
+let imagenDeCapipepo = new Image();
+imagenDeCapipepo.src = mokepones[0].photo;
+
 const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
     sectionReset.style.display = "none";
+    sectionSeeMap.style.display = "none";
 
     mokepones.forEach((mokepon) => {
         const charToUpperCase = mokepon.name.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
@@ -93,7 +103,17 @@ const selectPlayerPet = () => {
     if (selected) {
         // Mostrar siguiente sección y esconder la selección de personajes
         sectionPetPlayerSelect.style.display = "none";
-        sectionAttackSelect.style.display = "flex";
+        // sectionAttackSelect.style.display = "flex";
+        sectionSeeMap.style.display = "flex";
+        
+        canvas.drawImage(
+            imagenDeCapipepo,
+            20,
+            40,
+            100,
+            100
+        );
+
         getAttacks(playerPet);
         selectEnemyPet();
         return;

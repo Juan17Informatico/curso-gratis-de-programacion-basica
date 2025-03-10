@@ -152,6 +152,16 @@ input:checked + label {
     align-items: center;
 }
 
+.section-see-map{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-canvas{
+    border: 2px solid #fff;
+}
+
 @media (max-width: 400px) {
 
     .btn-attacks-container{
