@@ -130,14 +130,17 @@ const attackSequence = () => {
                 playerAttack.push("FUEGO");
                 console.log(playerAttack);
                 button.style.background = "#112f58";
+                button.disabled = true;
             } else if (target.textContent === "💧") {
                 playerAttack.push("AGUA");
                 console.log(playerAttack);
                 button.style.background = "#112f58";
+                button.disabled = true;
             } else {
                 playerAttack.push("TIERRA");
                 console.log(playerAttack);
                 button.style.background = "#112f58";
+                button.disabled = true;
             }
             elementalRandomEnemyAttack();
         });
@@ -237,9 +240,6 @@ const createMessage = (result, disabledGame = false) => {
     enemyAttackDiv.appendChild(newEnemyAttackParagraph);
 
     if (disabledGame) {
-        btnFire.disabled = true;
-        btnWater.disabled = true;
-        btnGround.disabled = true;
         // Habilitar botón para reiniciar juego
         sectionReset.style.display = "block";
     }
