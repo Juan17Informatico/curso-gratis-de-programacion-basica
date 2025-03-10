@@ -61,6 +61,7 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
+                id: 'btn-water',
                 name: '💧'
             }
         ]
@@ -72,6 +73,7 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
+                id: 'btn-water',
                 name: '💧'
             }
         ]
@@ -111,6 +113,7 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
+                id: 'btn-water',
                 name: '💧'
             }
         ]

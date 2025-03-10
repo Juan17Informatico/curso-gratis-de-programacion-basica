@@ -32,8 +32,9 @@ let btnFire;
 let btnWater;
 let btnGround;
 let buttons;
+let indexPlayerAttack, indexEnemyAttack;
 let playerAttackTextContent = [];
-let enemyMokeponAttack;
+let enemyMokeponAttack = [];
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -142,49 +143,73 @@ const attackSequence = () => {
 };
 
 const selectEnemyPet = () => {
-    const petsArray = [...pets];
-    const randomAttackEnemy = random(0, petsArray.length - 1);
+    // const petsArray = [...pets];
+    const randomAttackEnemy = random(0, mokepones.length - 1);
 
-    if (petsArray[randomAttackEnemy]) {
-        const charToUpperCase = petsArray[randomAttackEnemy].value.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
-        const formattedText = charToUpperCase + petsArray[randomAttackEnemy].value.slice(1);
+    if (mokepones[randomAttackEnemy]) {
+        const charToUpperCase = mokepones[randomAttackEnemy].name.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
+        const formattedText = charToUpperCase + mokepones[randomAttackEnemy].name.slice(1);
         spanEnemyPet.innerHTML = formattedText;
-        enemyMokeponAttack = petsArray[randomAttackEnemy].attacks;
+        enemyMokeponAttack = mokepones[randomAttackEnemy].attacks;
         attackSequence();
     }
 };
 
 const elementalRandomEnemyAttack = () => {
     const attackRandomEnemy = random(0, enemyMokeponAttack.length - 1);
-    enemyAttack.push(elementalAttacksArray[attackRandomEnemy]);
+
+    if (enemyMokeponAttack[attackRandomEnemy].name === "🔥") {
+        enemyAttack.push("FUEGO");
+    } else if (enemyMokeponAttack[attackRandomEnemy].name === "💧") {
+        enemyAttack.push("AGUA");
+    } else {
+        enemyAttack.push("TIERRA");
+    }
+
     console.log(enemyAttack);
-    
-    fight();
+
+    startFight();
+};
+
+const startFight = () => {
+    if (playerAttack.length === 5) {
+        fight();
+    }
+};
+
+const indexBothOpponents = (playerAttackNumber, enemyAttackNumber) => {
+    indexPlayerAttack = enemyAttack[playerAttackNumber];
+    indexEnemyAttack = enemyAttack[enemyAttackNumber];
 };
 
 const fight = () => {
-    let attackMessage = `Tu mascota atacó con ${playerAttack}, las mascota del enemigo atacó con ${enemyAttack}`;
-
-    if (enemyAttack == playerAttack) {
-        createMessage(`${attackMessage} - Empate`);
-    } else if (playerAttack == "FUEGO" && enemyAttack == "TIERRA") {
-        createMessage(`${attackMessage} - Ganaste`);
-        livesEnemy--;
-        spanEnemyLives.innerHTML = livesEnemy;
-    } else if (playerAttack == "AGUA" && enemyAttack == "FUEGO") {
-        createMessage(`${attackMessage} - Ganaste`);
-        livesEnemy--;
-        spanEnemyLives.innerHTML = livesEnemy;
-    } else if (playerAttack == "TIERRA" && enemyAttack == "AGUA") {
-        createMessage(`${attackMessage} - Ganaste`);
-        livesEnemy--;
-        spanEnemyLives.innerHTML = livesEnemy;
-    } else {
-        createMessage(`${attackMessage} - Perdiste`);
-        livesPlayer--;
-        spanPlayerLives.innerHTML = livesPlayer;
+    for (let i = 0; i < playerAttack.length; i++) {
+        let attackMessage = `Tu mascota atacó con ${playerAttack[i]}, las mascota del enemigo atacó con ${enemyAttack[i]}`;
+        if (playerAttack[i] === enemyAttack[i]) {
+            indexBothOpponents(i, i);
+            createMessage(`${attackMessage} - Empate`);
+        } else if (playerAttack[i] == "FUEGO" && enemyAttack[i] == "TIERRA") {
+            livesEnemy--;
+            spanEnemyLives.innerHTML = livesEnemy;
+            indexBothOpponents(i, i);
+            createMessage(`${attackMessage} - Ganaste`);
+        } else if (playerAttack[i] == "AGUA" && enemyAttack[i] == "FUEGO") {
+            livesEnemy--;
+            spanEnemyLives.innerHTML = livesEnemy;
+            indexBothOpponents(i, i);
+            createMessage(`${attackMessage} - Ganaste`);
+        } else if (playerAttack[i] == "TIERRA" && enemyAttack[i] == "AGUA") {
+            livesEnemy--;
+            spanEnemyLives.innerHTML = livesEnemy;
+            indexBothOpponents(i, i);
+            createMessage(`${attackMessage} - Ganaste`);
+        } else {
+            livesPlayer--;
+            spanPlayerLives.innerHTML = livesPlayer;
+            indexBothOpponents(i, i);
+            createMessage(`${attackMessage} - Perdiste`);
+        }
     }
-
     checkLives();
 };
 
@@ -201,8 +226,8 @@ const createMessage = (result, disabledGame = false) => {
     const newEnemyAttackParagraph = document.createElement("p");
 
     sectionMessages.innerHTML = result;
-    newPlayerAttackParagraph.innerHTML = playerAttack;
-    newEnemyAttackParagraph.innerHTML = enemyAttack;
+    newPlayerAttackParagraph.innerHTML = indexPlayerAttack;
+    newEnemyAttackParagraph.innerHTML = indexEnemyAttack;
 
     playerAttackDiv.appendChild(newPlayerAttackParagraph);
     enemyAttackDiv.appendChild(newEnemyAttackParagraph);
