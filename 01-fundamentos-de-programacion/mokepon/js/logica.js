@@ -32,6 +32,8 @@ let btnFire;
 let btnWater;
 let btnGround;
 let buttons;
+let playerVictory = 0,
+    enemyVictory = 0;
 let indexPlayerAttack, indexEnemyAttack;
 let playerAttackTextContent = [];
 let enemyMokeponAttack = [];
@@ -178,7 +180,7 @@ const startFight = () => {
 };
 
 const indexBothOpponents = (playerAttackNumber, enemyAttackNumber) => {
-    indexPlayerAttack = enemyAttack[playerAttackNumber];
+    indexPlayerAttack = playerAttack[playerAttackNumber];
     indexEnemyAttack = enemyAttack[enemyAttackNumber];
 };
 
@@ -189,23 +191,23 @@ const fight = () => {
             indexBothOpponents(i, i);
             createMessage(`${attackMessage} - Empate`);
         } else if (playerAttack[i] == "FUEGO" && enemyAttack[i] == "TIERRA") {
-            livesEnemy--;
-            spanEnemyLives.innerHTML = livesEnemy;
+            playerVictory++;
+            spanPlayerLives.innerHTML = playerVictory;
             indexBothOpponents(i, i);
             createMessage(`${attackMessage} - Ganaste`);
         } else if (playerAttack[i] == "AGUA" && enemyAttack[i] == "FUEGO") {
-            livesEnemy--;
-            spanEnemyLives.innerHTML = livesEnemy;
+            playerVictory++;
+            spanPlayerLives.innerHTML = playerVictory;
             indexBothOpponents(i, i);
             createMessage(`${attackMessage} - Ganaste`);
         } else if (playerAttack[i] == "TIERRA" && enemyAttack[i] == "AGUA") {
-            livesEnemy--;
-            spanEnemyLives.innerHTML = livesEnemy;
+            playerVictory++;
+            spanPlayerLives.innerHTML = playerVictory;
             indexBothOpponents(i, i);
             createMessage(`${attackMessage} - Ganaste`);
         } else {
-            livesPlayer--;
-            spanPlayerLives.innerHTML = livesPlayer;
+            enemyVictory++;
+            spanEnemyLives.innerHTML = enemyVictory;
             indexBothOpponents(i, i);
             createMessage(`${attackMessage} - Perdiste`);
         }
@@ -214,9 +216,11 @@ const fight = () => {
 };
 
 const checkLives = () => {
-    if (livesEnemy == 0) {
+    if (playerVictory === enemyVictory) {
+        createMessage("ESTO FUE UN EMPATE!! 🕊", true);
+    } else if (playerVictory > enemyVictory) {
         createMessage("FELICITACIONES GANASTE 🎆", true);
-    } else if (livesPlayer == 0) {
+    } else {
         createMessage("PERDISTE POR MALO 😢", true);
     }
 };
