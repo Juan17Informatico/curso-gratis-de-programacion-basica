@@ -33,20 +33,20 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-water',
-                name: '💧'
-            },
-            {
-                id: 'btn-water',
-                name: '💧'
-            },
-            {
-                id: 'btn-water',
-                name: '💧'
+                id: 'btn-fire',
+                name: '🔥'
             },
             {
                 id: 'btn-fire',
                 name: '🔥'
+            },
+            {
+                id: 'btn-water',
+                name: '💧'
+            },
+            {
+                id: 'btn-ground',
+                name: '🌱'
             },
             {
                 id: 'btn-ground',
@@ -61,9 +61,25 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
+                id: 'btn-fire',
+                name: '🔥'
+            },
+            {
                 id: 'btn-water',
                 name: '💧'
-            }
+            },
+            {
+                id: 'btn-water',
+                name: '💧'
+            },
+            {
+                id: 'btn-ground',
+                name: '🌱'
+            },
+            {
+                id: 'btn-ground',
+                name: '🌱'
+            },
         ]
         // another props
     },
@@ -73,9 +89,25 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
+                id: 'btn-fire',
+                name: '🔥'
+            },
+            {
+                id: 'btn-fire',
+                name: '🔥'
+            },
+            {
                 id: 'btn-water',
                 name: '💧'
-            }
+            },
+            {
+                id: 'btn-water',
+                name: '💧'
+            },
+            {
+                id: 'btn-ground',
+                name: '🌱'
+            },
         ]
         // another props
     },
@@ -113,9 +145,25 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
+                id: 'btn-fire',
+                name: '🔥'
+            },
+            {
+                id: 'btn-fire',
+                name: '🔥'
+            },
+            {
                 id: 'btn-water',
                 name: '💧'
-            }
+            },
+            {
+                id: 'btn-water',
+                name: '💧'
+            },
+            {
+                id: 'btn-ground',
+                name: '🌱'
+            },
         ]
         // another props
     },
