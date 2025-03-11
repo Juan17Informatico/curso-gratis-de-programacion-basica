@@ -30,8 +30,10 @@ let playerAttack = [],
 let livesEnemy = 3,
     livesPlayer = 3;
 const mokepones = [];
+const mokeponesEnemies = [];
 let playerPet;
 let playerPetObject;
+let enemyPetObject;
 let btnFire;
 let btnWater;
 let btnGround;
@@ -44,57 +46,50 @@ let enemyMokeponAttack = [];
 let canvas = map.getContext("2d");
 let interval;
 let mapBackground = new Image();
-mapBackground.src = './assets/mokemap.webp';
+mapBackground.src = "./assets/mokemap.webp";
 
 class Mokepon {
-    constructor(name, photo, live) {
+    constructor(name, photo, live, photoMap, x = 10, y = 10) {
         this.name = name;
         this.photo = photo;
         this.live = live;
         this.attacks = [];
-        this.x = 20;
-        this.y = 30;
-        this.width = 80;
-        this.height = 80;
+        this.x = x;
+        this.y = y;
+        this.width = 40;
+        this.height = 40;
         this.mapPhoto = new Image();
-        this.mapPhoto.src = photo;
+        this.mapPhoto.src = photoMap;
         this.speedX = 0;
         this.speedY = 0;
     }
+
+    paintMokepon = () => {
+        canvas.drawImage(
+            this.mapPhoto,
+            this.x,
+            this.y,
+            this.width,
+            this.height
+        );
+    };
 }
 
-const capipepo = new Mokepon(
-    "capipepo",
-    "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/capipepo.png",
-    3
-);
-
-capipepo.attacks = [
-    {
-        id: "btn-ground",
-        name: "🌱",
-    },
-    {
-        id: "btn-ground",
-        name: "🌱",
-    },
-    {
-        id: "btn-ground",
-        name: "🌱",
-    },
-    {
-        id: "btn-water",
-        name: "💧",
-    },
-    {
-        id: "btn-fire",
-        name: "🔥",
-    },
-];
-
 dataMokepones.forEach((element) => {
-    const mokepon = new Mokepon(element.name, element.photo, element.live);
+    const mokepon = new Mokepon(element.name, element.photo, element.live, element.photoFace);
+    const mokeponEnemy = new Mokepon(
+        element.name,
+        element.photo,
+        element.live,
+        element.photoFace,
+        80,
+        120
+    );
+    // Crear Array de ataques
     mokepon.attacks = [...element.attacks];
+    mokeponEnemy.attacks = [...element.attacks];
+    // Agregar al array
+    mokeponesEnemies.push(mokeponEnemy);
     mokepones.push(mokepon);
 });
 
@@ -302,8 +297,8 @@ const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const getPetPlayerSelected = () => {
-    return mokepones.find((mokepon) => mokepon.name == playerPet);
+const getPetPlayerSelected = ( arrayMokepones, playerPetName ) => {
+    return arrayMokepones.find((mokepon) => mokepon.name == playerPetName);
 };
 
 const paintCanvas = () => {
@@ -311,14 +306,9 @@ const paintCanvas = () => {
     playerPetObject.x = playerPetObject.x + playerPetObject.speedX;
     playerPetObject.y = playerPetObject.y + playerPetObject.speedY;
     canvas.clearRect(0, 0, map.width, map.height);
-    canvas.drawImage(
-        mapBackground,
-        0,
-        0,
-        map.width,
-        map.height
-    );
-    canvas.drawImage(playerPetObject.mapPhoto, playerPetObject.x, playerPetObject.y, playerPetObject.width, playerPetObject.height);
+    canvas.drawImage(mapBackground, 0, 0, map.width, map.height);
+    playerPetObject.paintMokepon();
+    enemyPetObject.paintMokepon();
 };
 
 const moveUp = () => {
@@ -359,7 +349,10 @@ const keyPressed = (event) => {
 };
 
 const startMap = () => {
-    playerPetObject = getPetPlayerSelected();
+    playerPetObject = getPetPlayerSelected(mokepones, playerPet);
+
+    const enemyCharacter = mokeponesEnemies[random(0, mokeponesEnemies.length - 1)];
+    enemyPetObject = getPetPlayerSelected(mokeponesEnemies, enemyCharacter.name);
     map.width = 320;
     map.height = 240;
     interval = setInterval(paintCanvas, 50);

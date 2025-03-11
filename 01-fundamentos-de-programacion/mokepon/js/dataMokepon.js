@@ -24,7 +24,8 @@ const dataMokepones = [
                 id: 'btn-fire',
                 name: '🔥'
             },
-        ]
+        ],
+        photoFace: './assets/capipepo.png'
         // another props
     },
     {
@@ -52,7 +53,8 @@ const dataMokepones = [
                 id: 'btn-ground',
                 name: '🌱'
             },
-        ]
+        ],
+        photoFace: './assets/hipoge.png',
         // another props
     },
     {
@@ -80,7 +82,8 @@ const dataMokepones = [
                 id: 'btn-ground',
                 name: '🌱'
             },
-        ]
+        ],
+        photoFace: './assets/langostelvis.png',
         // another props
     },
     {
@@ -108,7 +111,8 @@ const dataMokepones = [
                 id: 'btn-ground',
                 name: '🌱'
             },
-        ]
+        ],
+        photoFace: './assets/pydos.png',
         // another props
     },
     {
@@ -136,7 +140,8 @@ const dataMokepones = [
                 id: 'btn-ground',
                 name: '🌱'
             },
-        ]
+        ],
+        photoFace: './assets/ratigueya.png',
         // another props
     },
     {
@@ -164,7 +169,8 @@ const dataMokepones = [
                 id: 'btn-ground',
                 name: '🌱'
             },
-        ]
+        ],
+        photoFace: './assets/tucapalma.png',
         // another props
     },
 ];
