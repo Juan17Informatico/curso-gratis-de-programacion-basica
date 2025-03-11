@@ -41,6 +41,7 @@ let indexPlayerAttack, indexEnemyAttack;
 let playerAttackTextContent = [];
 let enemyMokeponAttack = [];
 let canvas = map.getContext("2d");
+let interval;
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -54,6 +55,8 @@ class Mokepon {
         this.height = 80;
         this.mapPhoto = new Image();
         this.mapPhoto.src = photo;
+        this.speedX = 0;
+        this.speedY = 0;
     }
 }
 
@@ -135,7 +138,7 @@ const selectPlayerPet = () => {
         sectionPetPlayerSelect.style.display = "none";
         // sectionAttackSelect.style.display = "flex";
         sectionSeeMap.style.display = "flex";
-
+        interval = setInterval(paintCharacter, 50);
         getAttacks(playerPet);
         selectEnemyPet();
         return;
@@ -303,17 +306,33 @@ const getPlayerSelected = () => {
 
 const paintCharacter = () => {
     // const { name, photo, x, y, width, height, mapPhoto } = getPlayerSelected();
+    capipepo.x = capipepo.x + capipepo.speedX;
+    capipepo.y = capipepo.y + capipepo.speedY;
     canvas.clearRect(0, 0, map.width, map.height);
     canvas.drawImage(capipepo.mapPhoto, capipepo.x, capipepo.y, capipepo.width, capipepo.height);
 };
 
-const moveCharacter = () => {
-    // const array = getPlayerSelected();
-    // console.log(array);
-
-    capipepo.x = capipepo.x + 5;
+const moveUp = () => {
+    capipepo.speedY = - 5;
     paintCharacter();
 };
+const moveLeft = () => {
+    capipepo.speedX = - 5;
+    paintCharacter();
+};
+const moveDown = () => {
+    capipepo.speedY = 5;
+    paintCharacter();
+};
+const moveRight = () => {
+    capipepo.speedX = 5;
+    paintCharacter();
+};
+
+const moveStop = () => {
+    capipepo.speedX = 0;
+    capipepo.speedY = 0;
+}
 
 console.log(mokepones);
 

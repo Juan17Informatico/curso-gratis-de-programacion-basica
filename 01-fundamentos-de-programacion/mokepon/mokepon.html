@@ -22,7 +22,10 @@
                 Recorre el mapa con tu mokepon
             </h1>
             <canvas id="map" class="map-canvas"></canvas>
-            <button onClick="moveCharacter()" >Mover</button>
+            <button onmouseup="moveStop()" onmousedown="moveUp()" >Arriba</button>
+            <button onmouseup="moveStop()" onmousedown="moveLeft()" >Izquierda</button>
+            <button onmouseup="moveStop()" onmousedown="moveDown()" >Abajo</button>
+            <button onmouseup="moveStop()" onmousedown="moveRight()" >Derecha</button>
         </section>
 
         <section id="attack-select" class="attack-select">
