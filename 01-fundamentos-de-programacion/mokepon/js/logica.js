@@ -19,8 +19,8 @@ const enemyAttackDiv = document.getElementById("enemy-attack");
 
 const btnAttacksContainerId = document.getElementById("btn-attacks-container-id");
 
-const sectionSeeMap = document.getElementById('see-map');
-const map = document.getElementById('map');
+const sectionSeeMap = document.getElementById("see-map");
+const map = document.getElementById("map");
 
 let pets;
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
@@ -42,25 +42,55 @@ let playerAttackTextContent = [];
 let enemyMokeponAttack = [];
 let canvas = map.getContext("2d");
 
-
-
 class Mokepon {
     constructor(name, photo, live) {
         this.name = name;
         this.photo = photo;
         this.live = live;
         this.attacks = [];
+        this.x = 20;
+        this.y = 30;
+        this.width = 80;
+        this.height = 80;
+        this.mapPhoto = new Image();
+        this.mapPhoto.src = photo;
     }
 }
+
+const capipepo = new Mokepon(
+    "capipepo",
+    "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/capipepo.png",
+    3
+);
+
+capipepo.attacks = [
+    {
+        id: 'btn-ground',
+        name: '🌱',
+    },
+    {
+        id: 'btn-ground',
+        name: '🌱',
+    },
+    {
+        id: 'btn-ground',
+        name: '🌱',
+    },
+    {
+        id: 'btn-water',
+        name: '💧'
+    },
+    {
+        id: 'btn-fire',
+        name: '🔥'
+    },
+]
 
 dataMokepones.forEach((element) => {
     const mokepon = new Mokepon(element.name, element.photo, element.live);
     mokepon.attacks = [...element.attacks];
     mokepones.push(mokepon);
 });
-
-let imagenDeCapipepo = new Image();
-imagenDeCapipepo.src = mokepones[0].photo;
 
 const iniciarJuego = () => {
     sectionAttackSelect.style.display = "none";
@@ -105,14 +135,6 @@ const selectPlayerPet = () => {
         sectionPetPlayerSelect.style.display = "none";
         // sectionAttackSelect.style.display = "flex";
         sectionSeeMap.style.display = "flex";
-        
-        canvas.drawImage(
-            imagenDeCapipepo,
-            20,
-            40,
-            100,
-            100
-        );
 
         getAttacks(playerPet);
         selectEnemyPet();
@@ -272,5 +294,27 @@ const reiniciarJuego = () => {
 const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+const getPlayerSelected = () => {
+    console.log(selectPlayerPet);
+
+    return mokepones.find((mokepon) => mokepon.name == selectPlayerPet);
+};
+
+const paintCharacter = () => {
+    // const { name, photo, x, y, width, height, mapPhoto } = getPlayerSelected();
+    canvas.clearRect(0, 0, map.width, map.height);
+    canvas.drawImage(capipepo.mapPhoto, capipepo.x, capipepo.y, capipepo.width, capipepo.height);
+};
+
+const moveCharacter = () => {
+    // const array = getPlayerSelected();
+    // console.log(array);
+
+    capipepo.x = capipepo.x + 5;
+    paintCharacter();
+};
+
+console.log(mokepones);
 
 window.addEventListener("load", iniciarJuego);
