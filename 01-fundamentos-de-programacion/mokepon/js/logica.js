@@ -31,6 +31,7 @@ let livesEnemy = 3,
     livesPlayer = 3;
 const mokepones = [];
 let playerPet;
+let playerPetObject;
 let btnFire;
 let btnWater;
 let btnGround;
@@ -42,6 +43,8 @@ let playerAttackTextContent = [];
 let enemyMokeponAttack = [];
 let canvas = map.getContext("2d");
 let interval;
+let mapBackground = new Image();
+mapBackground.src = './assets/mokemap.webp';
 
 class Mokepon {
     constructor(name, photo, live) {
@@ -299,40 +302,41 @@ const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const getPlayerSelected = () => {
-    console.log(selectPlayerPet);
-
-    return mokepones.find((mokepon) => mokepon.name == selectPlayerPet);
+const getPetPlayerSelected = () => {
+    return mokepones.find((mokepon) => mokepon.name == playerPet);
 };
 
-const paintCharacter = () => {
+const paintCanvas = () => {
     // const { name, photo, x, y, width, height, mapPhoto } = getPlayerSelected();
-    capipepo.x = capipepo.x + capipepo.speedX;
-    capipepo.y = capipepo.y + capipepo.speedY;
+    playerPetObject.x = playerPetObject.x + playerPetObject.speedX;
+    playerPetObject.y = playerPetObject.y + playerPetObject.speedY;
     canvas.clearRect(0, 0, map.width, map.height);
-    canvas.drawImage(capipepo.mapPhoto, capipepo.x, capipepo.y, capipepo.width, capipepo.height);
+    canvas.drawImage(
+        mapBackground,
+        0,
+        0,
+        map.width,
+        map.height
+    );
+    canvas.drawImage(playerPetObject.mapPhoto, playerPetObject.x, playerPetObject.y, playerPetObject.width, playerPetObject.height);
 };
 
 const moveUp = () => {
-    capipepo.speedY = -5;
-    paintCharacter();
+    playerPetObject.speedY = -5;
 };
 const moveLeft = () => {
-    capipepo.speedX = -5;
-    paintCharacter();
+    playerPetObject.speedX = -5;
 };
 const moveDown = () => {
-    capipepo.speedY = 5;
-    paintCharacter();
+    playerPetObject.speedY = 5;
 };
 const moveRight = () => {
-    capipepo.speedX = 5;
-    paintCharacter();
+    playerPetObject.speedX = 5;
 };
 
 const moveStop = () => {
-    capipepo.speedX = 0;
-    capipepo.speedY = 0;
+    playerPetObject.speedX = 0;
+    playerPetObject.speedY = 0;
 };
 
 const keyPressed = (event) => {
@@ -355,7 +359,10 @@ const keyPressed = (event) => {
 };
 
 const startMap = () => {
-    interval = setInterval(paintCharacter, 50);
+    playerPetObject = getPetPlayerSelected();
+    map.width = 320;
+    map.height = 240;
+    interval = setInterval(paintCanvas, 50);
     window.addEventListener("keydown", keyPressed);
     window.addEventListener("keyup", moveStop);
 };
