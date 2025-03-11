@@ -68,26 +68,26 @@ const capipepo = new Mokepon(
 
 capipepo.attacks = [
     {
-        id: 'btn-ground',
-        name: '🌱',
+        id: "btn-ground",
+        name: "🌱",
     },
     {
-        id: 'btn-ground',
-        name: '🌱',
+        id: "btn-ground",
+        name: "🌱",
     },
     {
-        id: 'btn-ground',
-        name: '🌱',
+        id: "btn-ground",
+        name: "🌱",
     },
     {
-        id: 'btn-water',
-        name: '💧'
+        id: "btn-water",
+        name: "💧",
     },
     {
-        id: 'btn-fire',
-        name: '🔥'
+        id: "btn-fire",
+        name: "🔥",
     },
-]
+];
 
 dataMokepones.forEach((element) => {
     const mokepon = new Mokepon(element.name, element.photo, element.live);
@@ -138,7 +138,8 @@ const selectPlayerPet = () => {
         sectionPetPlayerSelect.style.display = "none";
         // sectionAttackSelect.style.display = "flex";
         sectionSeeMap.style.display = "flex";
-        interval = setInterval(paintCharacter, 50);
+        startMap();
+
         getAttacks(playerPet);
         selectEnemyPet();
         return;
@@ -313,11 +314,11 @@ const paintCharacter = () => {
 };
 
 const moveUp = () => {
-    capipepo.speedY = - 5;
+    capipepo.speedY = -5;
     paintCharacter();
 };
 const moveLeft = () => {
-    capipepo.speedX = - 5;
+    capipepo.speedX = -5;
     paintCharacter();
 };
 const moveDown = () => {
@@ -332,7 +333,32 @@ const moveRight = () => {
 const moveStop = () => {
     capipepo.speedX = 0;
     capipepo.speedY = 0;
-}
+};
+
+const keyPressed = (event) => {
+    switch (event.key) {
+        case "ArrowUp":
+            moveUp();
+            break;
+        case "ArrowLeft":
+            moveLeft();
+            break;
+        case "ArrowDown":
+            moveDown();
+            break;
+        case "ArrowRight":
+            moveRight();
+            break;
+        default:
+            break;
+    }
+};
+
+const startMap = () => {
+    interval = setInterval(paintCharacter, 50);
+    window.addEventListener("keydown", keyPressed);
+    window.addEventListener("keyup", moveStop);
+};
 
 console.log(mokepones);
 
