@@ -1,7 +1,7 @@
 const dataMokepones = [
     {
         name: "capipepo",
-        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/capipepo.png",
+        photo: "./assets/capipepo.png",
         live: 3,
         attacks: [
             {
@@ -29,7 +29,7 @@ const dataMokepones = [
     },
     {
         name: "hipoge",
-        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/hipoge.png",
+        photo: "./assets/hipoge.png",
         live: 3,
         attacks: [
             {
@@ -57,7 +57,7 @@ const dataMokepones = [
     },
     {
         name: "langostelvis",
-        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/langostelvis.png",
+        photo: "./assets/langostelvis.png",
         live: 3,
         attacks: [
             {
@@ -85,7 +85,7 @@ const dataMokepones = [
     },
     {
         name: "pydos",
-        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/pydos.png",
+        photo: "./assets/pydos.png",
         live: 3,
         attacks: [
             {
@@ -113,7 +113,7 @@ const dataMokepones = [
     },
     {
         name: "ratigueya",
-        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/ratigueya.png",
+        photo: "./assets/ratigueya.png",
         live: 3,
         attacks: [
             {
@@ -141,7 +141,7 @@ const dataMokepones = [
     },
     {
         name: "tucapalma",
-        photo: "http://127.0.0.1:5500/01-fundamentos-de-programacion/mokepon/assets/tucapalma.png",
+        photo: "./assets/tucapalma.png",
         live: 3,
         attacks: [
             {
