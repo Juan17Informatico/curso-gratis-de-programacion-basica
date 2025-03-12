@@ -128,12 +128,9 @@ const selectPlayerPet = () => {
     if (selected) {
         // Mostrar siguiente sección y esconder la selección de personajes
         sectionPetPlayerSelect.style.display = "none";
-        // sectionAttackSelect.style.display = "flex";
         sectionSeeMap.style.display = "flex";
         startMap();
-
         getAttacks(playerPet);
-        selectEnemyPet();
         return;
     }
 
@@ -187,13 +184,13 @@ const attackSequence = () => {
 
 const selectEnemyPet = () => {
     // const petsArray = [...pets];
-    const randomAttackEnemy = random(0, mokepones.length - 1);
+    // const randomAttackEnemy = random(0, mokeponesEnemies.length - 1);
 
-    if (mokepones[randomAttackEnemy]) {
-        const charToUpperCase = mokepones[randomAttackEnemy].name.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
-        const formattedText = charToUpperCase + mokepones[randomAttackEnemy].name.slice(1);
+    if (enemyPetObject.name) {
+        const charToUpperCase = enemyPetObject.name.charAt(0).toUpperCase(); // Convierte la primera letra en mayúscula
+        const formattedText = charToUpperCase + enemyPetObject.name.slice(1);
         spanEnemyPet.innerHTML = formattedText;
-        enemyMokeponAttack = mokepones[randomAttackEnemy].attacks;
+        enemyMokeponAttack = enemyPetObject.attacks;
         attackSequence();
     }
 };
@@ -304,7 +301,7 @@ const paintCanvas = () => {
     playerPetObject.paintMokepon();
     enemyPetObject.paintMokepon();
     if(playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0){
-        revisarColision(enemyPetObject);
+        checkCollision(enemyPetObject);
     }
 };
 
@@ -357,7 +354,7 @@ const startMap = () => {
     window.addEventListener("keyup", moveStop);
 };
 
-const revisarColision = (enemy) => {
+const checkCollision = (enemy) => {
     const enemyUp = enemy.y;
     const enemyDown = enemy.y + enemy.height;
     const enemyRight = enemy.x + enemy.width;
@@ -373,7 +370,10 @@ const revisarColision = (enemy) => {
     }
 
     moveStop();
-    alert("alerta de colisión");
+    clearInterval(interval);
+    sectionAttackSelect.style.display = "flex";
+    sectionSeeMap.style.display = "none";
+    selectEnemyPet();
 };
 
 console.log(mokepones);
