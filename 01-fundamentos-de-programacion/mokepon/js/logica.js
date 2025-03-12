@@ -47,17 +47,34 @@ let canvas = map.getContext("2d");
 let interval;
 let mapBackground = new Image();
 mapBackground.src = "./assets/mokemap.webp";
+let heightSearch;
+let widthMap = window.innerWidth - 20;
+const widthMaxMap = 350;
+
+if(widthMap > widthMaxMap){
+    widthMap = widthMaxMap - 20;
+}
+
+
+heightSearch = widthMap * 600 / 800;
+map.width = widthMap;
+map.height = heightSearch;
+
+const random = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
 
 class Mokepon {
-    constructor(name, photo, live, photoMap, x = 10, y = 10) {
+    constructor(name, photo, live, photoMap) {
         this.name = name;
         this.photo = photo;
         this.live = live;
         this.attacks = [];
-        this.x = x;
-        this.y = y;
         this.width = 80;
         this.height = 80;
+        this.x = random(0, map.width - this.width);
+        this.y = random(0, map.height - this.height);
         this.mapPhoto = new Image();
         this.mapPhoto.src = photoMap;
         this.speedX = 0;
@@ -75,9 +92,7 @@ dataMokepones.forEach((element) => {
         element.name,
         element.photo,
         element.live,
-        element.photoFace,
-        80,
-        120
+        element.photoFace
     );
     // Crear Array de ataques
     mokepon.attacks = [...element.attacks];
@@ -284,10 +299,6 @@ const reiniciarJuego = () => {
     location.reload();
 };
 
-const random = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
 const getPetPlayerSelected = (arrayMokepones, playerPetName) => {
     return arrayMokepones.find((mokepon) => mokepon.name == playerPetName);
 };
@@ -347,8 +358,6 @@ const startMap = () => {
 
     const enemyCharacter = mokeponesEnemies[random(0, mokeponesEnemies.length - 1)];
     enemyPetObject = getPetPlayerSelected(mokeponesEnemies, enemyCharacter.name);
-    map.width = 520;
-    map.height = 440;
     interval = setInterval(paintCanvas, 50);
     window.addEventListener("keydown", keyPressed);
     window.addEventListener("keyup", moveStop);
