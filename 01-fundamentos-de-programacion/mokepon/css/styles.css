@@ -36,7 +36,8 @@ body {
     margin-bottom: 20px;
 }
 
-.cards, .btn-attacks-container {
+.cards,
+.btn-attacks-container {
     display: flex;
     gap: 10px;
     max-width: 100%;
@@ -63,9 +64,8 @@ input {
 }
 
 input:checked + label {
-    background-color: #022F3B;
+    background-color: #022f3b;
     box-shadow: 0px 2px 10px rgba(253, 253, 253, 0.8);
-
 }
 
 .mokepon-card img {
@@ -87,8 +87,8 @@ input:checked + label {
     transition: background-color ease-out 0.3s;
 }
 
-.btn-pet:hover{
-    background-color: #45C1E4;
+.btn-pet:hover {
+    background-color: #45c1e4;
 }
 
 .attack-select {
@@ -124,7 +124,7 @@ input:checked + label {
     font-weight: 400;
     cursor: pointer;
     font-size: 18px;
-    background-color: #022F3B;
+    background-color: #022f3b;
     border-radius: 15px;
     margin: 15px;
     transition: all ease-out 0.2s;
@@ -142,26 +142,52 @@ input:checked + label {
     color: whitesmoke;
 }
 
-.attacks div #lives-player, .attacks div #lives-enemy{
+.attacks div #lives-player,
+.attacks div #lives-enemy {
     font-size: 36px;
 }
 
-.enemy-attacks, .player-attacks{
+.enemy-attacks,
+.player-attacks {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.section-see-map{
+.section-see-map {
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-@media (max-width: 400px) {
+.section-see-map button {
+    background-color: darkcyan;
+    border-radius: 5px;
+    border: none;
+    color: #051014;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    height: 50px;
+    margin: 10px;
+    width: 100px;
+    transition: background-color ease-out 0.3s;
+}
 
-    .btn-attacks-container{
+.section-see-map button:hover {
+    background-color: #45c1e4;
+}
+
+@media (max-width: 560px) {
+    .btn-attacks-container {
         flex-direction: column;
     }
+}
 
+@media (max-width: 450px) {
+    .section-see-map div{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 }

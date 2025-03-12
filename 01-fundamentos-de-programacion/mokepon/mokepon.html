@@ -18,14 +18,14 @@
         </section>
 
         <section id="see-map" class="section-see-map">
-            <h1 class="subtitle">
-                Recorre el mapa con tu mokepon
-            </h1>
+            <h1 class="subtitle">Recorre el mapa con tu mokepon</h1>
             <canvas id="map" class="map-canvas"></canvas>
-            <button onmouseup="moveStop()" onmousedown="moveUp()" >Arriba</button>
-            <button onmouseup="moveStop()" onmousedown="moveLeft()" >Izquierda</button>
-            <button onmouseup="moveStop()" onmousedown="moveDown()" >Abajo</button>
-            <button onmouseup="moveStop()" onmousedown="moveRight()" >Derecha</button>
+            <button onmouseup="moveStop()" onmousedown="moveUp()">Arriba</button>
+            <div>
+                <button onmouseup="moveStop()" onmousedown="moveLeft()">Izquierda</button>
+                <button onmouseup="moveStop()" onmousedown="moveDown()">Abajo</button>
+                <button onmouseup="moveStop()" onmousedown="moveRight()">Derecha</button>
+            </div>
         </section>
 
         <section id="attack-select" class="attack-select">

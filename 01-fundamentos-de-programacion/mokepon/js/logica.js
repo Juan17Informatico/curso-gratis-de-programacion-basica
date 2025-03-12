@@ -49,7 +49,7 @@ let mapBackground = new Image();
 mapBackground.src = "./assets/mokemap.webp";
 let heightSearch;
 let widthMap = window.innerWidth - 20;
-const widthMaxMap = 350;
+const widthMaxMap = 600;
 
 if(widthMap > widthMaxMap){
     widthMap = widthMaxMap - 20;
