@@ -56,8 +56,8 @@ class Mokepon {
         this.attacks = [];
         this.x = x;
         this.y = y;
-        this.width = 40;
-        this.height = 40;
+        this.width = 80;
+        this.height = 80;
         this.mapPhoto = new Image();
         this.mapPhoto.src = photoMap;
         this.speedX = 0;
@@ -65,13 +65,7 @@ class Mokepon {
     }
 
     paintMokepon = () => {
-        canvas.drawImage(
-            this.mapPhoto,
-            this.x,
-            this.y,
-            this.width,
-            this.height
-        );
+        canvas.drawImage(this.mapPhoto, this.x, this.y, this.width, this.height);
     };
 }
 
@@ -297,7 +291,7 @@ const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const getPetPlayerSelected = ( arrayMokepones, playerPetName ) => {
+const getPetPlayerSelected = (arrayMokepones, playerPetName) => {
     return arrayMokepones.find((mokepon) => mokepon.name == playerPetName);
 };
 
@@ -309,6 +303,9 @@ const paintCanvas = () => {
     canvas.drawImage(mapBackground, 0, 0, map.width, map.height);
     playerPetObject.paintMokepon();
     enemyPetObject.paintMokepon();
+    if(playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0){
+        revisarColision(enemyPetObject);
+    }
 };
 
 const moveUp = () => {
@@ -353,11 +350,30 @@ const startMap = () => {
 
     const enemyCharacter = mokeponesEnemies[random(0, mokeponesEnemies.length - 1)];
     enemyPetObject = getPetPlayerSelected(mokeponesEnemies, enemyCharacter.name);
-    map.width = 320;
-    map.height = 240;
+    map.width = 520;
+    map.height = 440;
     interval = setInterval(paintCanvas, 50);
     window.addEventListener("keydown", keyPressed);
     window.addEventListener("keyup", moveStop);
+};
+
+const revisarColision = (enemy) => {
+    const enemyUp = enemy.y;
+    const enemyDown = enemy.y + enemy.height;
+    const enemyRight = enemy.x + enemy.width;
+    const enemyLeft = enemy.x;
+
+    const petUp = playerPetObject.y;
+    const petDown = playerPetObject.y + playerPetObject.height;
+    const petRight = playerPetObject.x + playerPetObject.width;
+    const petLeft = playerPetObject.x;
+
+    if (petDown < enemyUp || petUp > enemyDown || petRight < enemyLeft || petLeft > enemyRight) {
+        return;
+    }
+
+    moveStop();
+    alert("alerta de colisión");
 };
 
 console.log(mokepones);
