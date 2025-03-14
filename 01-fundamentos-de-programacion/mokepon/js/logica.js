@@ -1,3 +1,4 @@
+const apiURL = "http://localhost:8080";
 const sectionAttackSelect = document.getElementById("attack-select");
 const sectionReset = document.getElementById("reset");
 const btnPetPlayer = document.getElementById("btn-pet");
@@ -22,6 +23,7 @@ const btnAttacksContainerId = document.getElementById("btn-attacks-container-id"
 const sectionSeeMap = document.getElementById("see-map");
 const map = document.getElementById("map");
 
+let playerId = null;
 let pets;
 const elementalAttacksArray = ["FUEGO", "AGUA", "TIERRA"];
 let optionMokepones;
@@ -122,11 +124,12 @@ const iniciarJuego = () => {
 };
 
 const joinGame = () => {
-    fetch("http://localhost:8080/join").then((response) => {
+    fetch(`${apiURL}/join`).then((response) => {
         console.log(response);
         if (response.ok) {
             response.text().then((resFinal) => {
                 console.log(resFinal);
+                playerId = resFinal;
             });
         }
     });
@@ -149,6 +152,9 @@ const selectPlayerPet = () => {
     if (selected) {
         // Mostrar siguiente sección y esconder la selección de personajes
         sectionPetPlayerSelect.style.display = "none";
+
+        selectMokeponApi(playerPet);
+
         sectionSeeMap.style.display = "flex";
         startMap();
         getAttacks(playerPet);
@@ -157,6 +163,18 @@ const selectPlayerPet = () => {
 
     alert("No seleccionaste ninguna mascota!");
 };
+
+const selectMokeponApi = (playerPetName) => {
+    fetch(`${apiURL}/mokepon/${playerId}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: playerPetName
+        })
+    });
+}
 
 const getAttacks = (playerPetString) => {
     let attacks;
