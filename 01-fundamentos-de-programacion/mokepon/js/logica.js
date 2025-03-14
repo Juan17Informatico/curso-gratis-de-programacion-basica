@@ -334,10 +334,24 @@ const paintCanvas = () => {
     canvas.clearRect(0, 0, map.width, map.height);
     canvas.drawImage(mapBackground, 0, 0, map.width, map.height);
     playerPetObject.paintMokepon();
+    sendPosition( playerPetObject.x, playerPetObject.y );
     enemyPetObject.paintMokepon();
     if (playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0) {
         checkCollision(enemyPetObject);
     }
+};
+
+const sendPosition = ( x, y ) => {
+    fetch(`${apiURL}/mokepon/${playerId}/position`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            x,
+            y
+        })
+    });
 };
 
 const moveUp = () => {
