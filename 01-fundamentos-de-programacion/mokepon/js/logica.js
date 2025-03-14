@@ -51,19 +51,17 @@ let heightSearch;
 let widthMap = window.innerWidth - 20;
 const widthMaxMap = 600;
 
-if(widthMap > widthMaxMap){
+if (widthMap > widthMaxMap) {
     widthMap = widthMaxMap - 20;
 }
 
-
-heightSearch = widthMap * 600 / 800;
+heightSearch = (widthMap * 600) / 800;
 map.width = widthMap;
 map.height = heightSearch;
 
 const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
-
 
 class Mokepon {
     constructor(name, photo, live, photoMap) {
@@ -88,12 +86,7 @@ class Mokepon {
 
 dataMokepones.forEach((element) => {
     const mokepon = new Mokepon(element.name, element.photo, element.live, element.photoFace);
-    const mokeponEnemy = new Mokepon(
-        element.name,
-        element.photo,
-        element.live,
-        element.photoFace
-    );
+    const mokeponEnemy = new Mokepon(element.name, element.photo, element.live, element.photoFace);
     // Crear Array de ataques
     mokepon.attacks = [...element.attacks];
     mokeponEnemy.attacks = [...element.attacks];
@@ -124,6 +117,19 @@ const iniciarJuego = () => {
 
     btnPetPlayer.addEventListener("click", selectPlayerPet);
     botonReiniciar.addEventListener("click", reiniciarJuego);
+
+    joinGame();
+};
+
+const joinGame = () => {
+    fetch("http://localhost:8080/join").then((response) => {
+        console.log(response);
+        if (response.ok) {
+            response.text().then((resFinal) => {
+                console.log(resFinal);
+            });
+        }
+    });
 };
 
 const selectPlayerPet = () => {
@@ -311,7 +317,7 @@ const paintCanvas = () => {
     canvas.drawImage(mapBackground, 0, 0, map.width, map.height);
     playerPetObject.paintMokepon();
     enemyPetObject.paintMokepon();
-    if(playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0){
+    if (playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0) {
         checkCollision(enemyPetObject);
     }
 };
