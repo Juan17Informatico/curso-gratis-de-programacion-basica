@@ -66,7 +66,8 @@ const random = (min, max) => {
 };
 
 class Mokepon {
-    constructor(name, photo, live, photoMap) {
+    constructor(name, photo, live, photoMap, id = null) {
+        this.id = id;
         this.name = name;
         this.photo = photo;
         this.live = live;
@@ -166,15 +167,15 @@ const selectPlayerPet = () => {
 
 const selectMokeponApi = (playerPetName) => {
     fetch(`${apiURL}/mokepon/${playerId}`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            mokepon: playerPetName
-        })
+            mokepon: playerPetName,
+        }),
     });
-}
+};
 
 const getAttacks = (playerPetString) => {
     let attacks;
@@ -334,23 +335,40 @@ const paintCanvas = () => {
     canvas.clearRect(0, 0, map.width, map.height);
     canvas.drawImage(mapBackground, 0, 0, map.width, map.height);
     playerPetObject.paintMokepon();
-    sendPosition( playerPetObject.x, playerPetObject.y );
-    enemyPetObject.paintMokepon();
+    sendPosition(playerPetObject.x, playerPetObject.y);
+    // enemyPetObject.paintMokepon();
     if (playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0) {
-        checkCollision(enemyPetObject);
+        // checkCollision(enemyPetObject);
     }
 };
 
-const sendPosition = ( x, y ) => {
+const sendPosition = (x, y) => {
     fetch(`${apiURL}/mokepon/${playerId}/position`, {
         method: "post",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
             x,
-            y
-        })
+            y,
+        }),
+    }).then((res) => {
+        if (res.ok) {
+            res.json().then(({ enemys }) => {
+                let mokeponEnemyOnline = null
+
+                enemys.forEach((enemy) => {
+                    const mokeponName = enemy.mokepon?.name || "";
+                    if(mokeponName.length > 0){
+                        mokeponEnemyOnline = getPetPlayerSelected(mokeponesEnemies, mokeponName);
+                    }
+                    mokeponEnemyOnline.x = enemy.x;
+                    mokeponEnemyOnline.y = enemy.y;
+                    mokeponEnemyOnline.paintMokepon();
+                });
+
+            });
+        }
     });
 };
 
@@ -394,8 +412,8 @@ const keyPressed = (event) => {
 const startMap = () => {
     playerPetObject = getPetPlayerSelected(mokepones, playerPet);
 
-    const enemyCharacter = mokeponesEnemies[random(0, mokeponesEnemies.length - 1)];
-    enemyPetObject = getPetPlayerSelected(mokeponesEnemies, enemyCharacter.name);
+    // const enemyCharacter = mokeponesEnemies[random(0, mokeponesEnemies.length - 1)];
+    // enemyPetObject = getPetPlayerSelected(mokeponesEnemies, enemyCharacter.name);
     interval = setInterval(paintCanvas, 50);
     window.addEventListener("keydown", keyPressed);
     window.addEventListener("keyup", moveStop);

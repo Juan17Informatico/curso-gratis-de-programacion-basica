@@ -5,27 +5,27 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-ground',
-                name: '🌱',
+                id: "btn-ground",
+                name: "🌱",
             },
             {
-                id: 'btn-ground',
-                name: '🌱',
+                id: "btn-ground",
+                name: "🌱",
             },
             {
-                id: 'btn-ground',
-                name: '🌱',
+                id: "btn-ground",
+                name: "🌱",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
         ],
-        photoFace: './assets/capipepo.png'
+        photoFace: "./assets/capipepo.png",
         // another props
     },
     {
@@ -34,27 +34,27 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
         ],
-        photoFace: './assets/hipoge.png',
+        photoFace: "./assets/hipoge.png",
         // another props
     },
     {
@@ -63,27 +63,27 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
         ],
-        photoFace: './assets/langostelvis.png',
+        photoFace: "./assets/langostelvis.png",
         // another props
     },
     {
@@ -92,27 +92,27 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
         ],
-        photoFace: './assets/pydos.png',
+        photoFace: "./assets/pydos.png",
         // another props
     },
     {
@@ -121,27 +121,27 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
         ],
-        photoFace: './assets/ratigueya.png',
+        photoFace: "./assets/ratigueya.png",
         // another props
     },
     {
@@ -150,27 +150,27 @@ const dataMokepones = [
         live: 3,
         attacks: [
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-fire',
-                name: '🔥'
+                id: "btn-fire",
+                name: "🔥",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-water',
-                name: '💧'
+                id: "btn-water",
+                name: "💧",
             },
             {
-                id: 'btn-ground',
-                name: '🌱'
+                id: "btn-ground",
+                name: "🌱",
             },
         ],
-        photoFace: './assets/tucapalma.png',
+        photoFace: "./assets/tucapalma.png",
         // another props
     },
 ];
