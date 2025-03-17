@@ -339,7 +339,7 @@ const paintCanvas = () => {
     sendPosition(playerPetObject.x, playerPetObject.y);
     mokeponesEnemiesArray.forEach((mokeponEnemy) => {
         enemyPetObject = mokeponEnemy;
-        enemyPetObject.paintMokepon();
+        mokeponEnemy.paintMokepon();
     })
     // enemyPetObject.paintMokepon();
     if (playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0) {
@@ -359,7 +359,7 @@ const sendPosition = (x, y) => {
         }),
     }).then((res) => {
         if (res.ok) {
-            res.json().then(({ enemys }) => {
+            res.json().then(({ enemys }) => {                
                 mokeponesEnemiesArray = enemys.map((enemy) => {
                     let mokeponEnemyOnline = null
                     const mokeponName = enemy.mokepon?.name || "";
