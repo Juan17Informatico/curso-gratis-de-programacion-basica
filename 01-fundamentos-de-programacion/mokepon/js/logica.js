@@ -33,6 +33,7 @@ let livesEnemy = 3,
     livesPlayer = 3;
 const mokepones = [];
 const mokeponesEnemies = [];
+let mokeponesEnemiesArray = [];
 let playerPet;
 let playerPetObject;
 let enemyPetObject;
@@ -336,6 +337,10 @@ const paintCanvas = () => {
     canvas.drawImage(mapBackground, 0, 0, map.width, map.height);
     playerPetObject.paintMokepon();
     sendPosition(playerPetObject.x, playerPetObject.y);
+    mokeponesEnemiesArray.forEach((mokeponEnemy) => {
+        enemyPetObject = mokeponEnemy;
+        enemyPetObject.paintMokepon();
+    })
     // enemyPetObject.paintMokepon();
     if (playerPetObject.speedX !== 0 || playerPetObject.speedY !== 0) {
         // checkCollision(enemyPetObject);
@@ -355,16 +360,15 @@ const sendPosition = (x, y) => {
     }).then((res) => {
         if (res.ok) {
             res.json().then(({ enemys }) => {
-                let mokeponEnemyOnline = null
-
-                enemys.forEach((enemy) => {
+                mokeponesEnemiesArray = enemys.map((enemy) => {
+                    let mokeponEnemyOnline = null
                     const mokeponName = enemy.mokepon?.name || "";
-                    if(mokeponName.length > 0){
-                        mokeponEnemyOnline = getPetPlayerSelected(mokeponesEnemies, mokeponName);
+                    mokeponEnemyOnline = getPetPlayerSelected(mokeponesEnemies, mokeponName);
+                    if(mokeponEnemyOnline){
+                        mokeponEnemyOnline.x = enemy.x;
+                        mokeponEnemyOnline.y = enemy.y;
                     }
-                    mokeponEnemyOnline.x = enemy.x;
-                    mokeponEnemyOnline.y = enemy.y;
-                    mokeponEnemyOnline.paintMokepon();
+                    return mokeponEnemyOnline;
                 });
 
             });
