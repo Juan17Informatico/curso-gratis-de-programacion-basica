@@ -22,6 +22,9 @@ class Player {
         this.y = y;
     }
 
+    assignAttacks(attacks) {
+        this.attacks = attacks;
+    }
 }
 
 class Mokepon {
@@ -76,6 +79,21 @@ app.post("/mokepon/:playerId/position", ( req, res ) => {
     res.send({
         enemys
     });
+
+});
+
+app.post("/mokepon/:playerId/attacks", ( req, res ) => {
+
+    const playerId = req.params.playerId || "";
+    const attacks = req.body.attacks || "";
+
+    const playerIndex = players.findIndex((player) => player.id === playerId );
+
+    if(playerIndex >= 0){
+        players[playerIndex].assignAttacks(attacks);
+    }
+
+    res.end();
 
 });
 
