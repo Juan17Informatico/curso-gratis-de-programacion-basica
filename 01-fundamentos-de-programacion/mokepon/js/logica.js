@@ -237,7 +237,24 @@ const sendAttacks = () => {
             attacks: playerAttack
         })
     })
+
+    interval = setInterval(getAttacksServer, 50);
 };
+
+const getAttacksServer = () => {
+    fetch(`${apiURL}/mokepon/${enemyId}/attacks`)
+        .then((res) => {
+            if(res.ok){
+                res.json()
+                    .then(({ attacks }) => {
+                        if(attacks.length === 5){
+                            enemyAttack = attacks;
+                            fight();
+                        }
+                    });
+            }
+        });
+}
 
 const selectEnemyPet = () => {
     // const petsArray = [...pets];
@@ -280,6 +297,7 @@ const indexBothOpponents = (playerAttackNumber, enemyAttackNumber) => {
 };
 
 const fight = () => {
+    clearInterval(interval);
     for (let i = 0; i < playerAttack.length; i++) {
         let attackMessage = `Tu mascota atacó con ${playerAttack[i]}, las mascota del enemigo atacó con ${enemyAttack[i]}`;
         if (playerAttack[i] === enemyAttack[i]) {
