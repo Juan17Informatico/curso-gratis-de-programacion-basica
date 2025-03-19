@@ -20,11 +20,39 @@
         <section id="see-map" class="section-see-map">
             <h1 class="subtitle">Recorre el mapa con tu mokepon</h1>
             <canvas id="map" class="map-canvas"></canvas>
-            <button onmouseup="moveStop()" onmousedown="moveUp()">Arriba</button>
+            <button
+                ontouchstart="moveUp()"
+                ontouchend="moveStop()"
+                onmouseup="moveStop()"
+                onmousedown="moveUp()"
+            >
+                Arriba
+            </button>
             <div>
-                <button onmouseup="moveStop()" onmousedown="moveLeft()">Izquierda</button>
-                <button onmouseup="moveStop()" onmousedown="moveDown()">Abajo</button>
-                <button onmouseup="moveStop()" onmousedown="moveRight()">Derecha</button>
+                <button
+                    ontouchstart="moveUp()"
+                    ontouchend="moveStop()"
+                    onmousedown="moveLeft()"
+                    onmousedown="moveLeft()"
+                >
+                    Izquierda
+                </button>
+                <button
+                    ontouchstart="moveUp()"
+                    ontouchend="moveStop()"
+                    onmousedown="moveDown()"
+                    onmousedown="moveDown()"
+                >
+                    Abajo
+                </button>
+                <button
+                    ontouchstart="moveUp()"
+                    ontouchend="moveStop()"
+                    onmousedown="moveRight()"
+                    onmousedown="moveRight()"
+                >
+                    Derecha
+                </button>
             </div>
         </section>
 

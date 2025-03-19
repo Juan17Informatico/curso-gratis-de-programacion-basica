@@ -1,4 +1,4 @@
-const apiURL = "http://localhost:8080";
+const apiURL = "http://192.168.1.176:8080";
 const sectionAttackSelect = document.getElementById("attack-select");
 const sectionReset = document.getElementById("reset");
 const btnPetPlayer = document.getElementById("btn-pet");
